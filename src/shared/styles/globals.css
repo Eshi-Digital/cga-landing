@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Poppins Font */
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url(/static/fonts/Poppins/Poppins-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url(/static/fonts/Poppins/Poppins-SemiBold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url(/static/fonts/Poppins/Poppins-Medium.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url(/static/fonts/Poppins/Poppins-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-Light";
+  src: url(/static/fonts/Poppins/Poppins-Light.ttf) format("truetype");
+}
+
+/* Storytella font */
+@font-face {
+  font-family: "storytella";
+  src: url(/static/fonts/storytella/storytella.ttf) format("truetype");
+}
+
+html {
+  scroll-behavior: smooth;
+}
