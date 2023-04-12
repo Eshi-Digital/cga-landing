@@ -2,7 +2,7 @@ import NavigationBar from "@/components/shared/navigation-bar";
 import type { NextPage } from "next";
 import Head from "next/head";
 
-const Home: NextPage = () => {
+const About: NextPage = () => {
   return (
     <div>
       <Head>
@@ -17,4 +17,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default About;

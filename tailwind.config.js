@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
@@ -22,7 +24,7 @@ module.exports = {
         storytella: ["storytella", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        primary: "#F9A826",
+        primary: "#5494FF",
         secondary: "#F9A826",
       },
       backgroundImage: {
@@ -35,7 +37,6 @@ module.exports = {
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),
-    require("@tailwindcss/line-clamp"),
     require("@tailwindcss/aspect-ratio"),
     require("@headlessui/tailwindcss"),
   ],
