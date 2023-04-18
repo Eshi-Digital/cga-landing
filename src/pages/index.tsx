@@ -1,3 +1,4 @@
+import AboutUsSection from "@/components/home/about-us-section";
 import NavigationBar from "@/components/shared/navigation-bar";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <NavigationBar />
+        <AboutUsSection />
       </main>
     </div>
   );
