@@ -21,10 +21,13 @@ module.exports = {
         "poppins-medium": ["Poppins-Medium", ...defaultTheme.fontFamily.sans],
         "poppins-regular": ["Poppins-Regular", ...defaultTheme.fontFamily.sans],
         "poppins-light": ["Poppins-Light", ...defaultTheme.fontFamily.sans],
-        storytella: ["storytella", ...defaultTheme.fontFamily.sans],
+        "PoiretOne-Regular": [
+          "PoiretOne-Regular",
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
       colors: {
-        primary: "#5494FF",
+        primary: "#2D5859",
         secondary: "#F9A826",
       },
       backgroundImage: {
@@ -32,6 +35,9 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+    },
+    backgroundImage: {
+      hero: "url('/static/images/hero.png')",
     },
   },
   plugins: [

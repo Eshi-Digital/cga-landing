@@ -28,10 +28,10 @@
   src: url(/static/fonts/Poppins/Poppins-Light.ttf) format("truetype");
 }
 
-/* Storytella font */
+/* Poriet One Font */
 @font-face {
-  font-family: "storytella";
-  src: url(/static/fonts/storytella/storytella.ttf) format("truetype");
+  font-family: "PoiretOne";
+  src: url(/static/fonts/PoiretOne-Regular.ttf) format("truetype");
 }
 
 html {
