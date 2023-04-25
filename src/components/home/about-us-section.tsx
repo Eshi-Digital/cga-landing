@@ -13,7 +13,7 @@ const AboutUsSection = () => {
           possimus recusandae minima voluptatem dolorem praesentium.
         </p>
       </div>
-      <div className="flex flex-row mx-20 gap-8 my-8">
+      <div className="flex flex-row mx-20 gap-14 my-8">
         <AboutUsCard />
         <AboutUsCard />
         <AboutUsCard />

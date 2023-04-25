@@ -2,7 +2,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 
 const AboutUsCard = () => {
   return (
-    <div className="py-12 w-80 flex flex-col items-center gap-5 shadow-sm px-4">
+    <div className="py-12 w-80 flex flex-col items-center gap-5 shadow-md px-4 rounded-lg">
       <div>
         <div className="rounded-full w-20 h-20 bg-red-200"></div>
       </div>
