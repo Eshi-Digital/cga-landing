@@ -1,3 +1,6 @@
+import BlogMainSecton from "@/components/blog/blog-main-section";
+import Footer from "@/components/shared/footer";
+import Header from "@/components/shared/header";
 import NavigationBar from "@/components/shared/navigation-bar";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -12,6 +15,9 @@ const Blog: NextPage = () => {
       </Head>
       <main>
         <NavigationBar />
+        <Header name="Blog" />
+        <BlogMainSecton />
+        <Footer />
       </main>
     </div>
   );

@@ -1,4 +1,8 @@
+import Footer from "@/components/shared/footer";
+import Header from "@/components/shared/header";
 import NavigationBar from "@/components/shared/navigation-bar";
+import JobCategorySection from "@/components/vacant/jobCategorySection";
+import VacancySection from "@/components/vacant/vacancySection";
 import type { NextPage } from "next";
 import Head from "next/head";
 
@@ -12,6 +16,10 @@ const Vacant: NextPage = () => {
       </Head>
       <main>
         <NavigationBar />
+        <Header />
+        <JobCategorySection />
+        <VacancySection />
+        <Footer />
       </main>
     </div>
   );

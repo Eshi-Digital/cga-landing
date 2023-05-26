@@ -6,6 +6,8 @@ const am_content = {
   membership_link: "አባልነት",
   research_link: "ምርምር",
   contact_link: "አድራሻ",
+  vacancy_link: "ክፍት ቦታ",
+  blog_link: "ብሎግ",
 };
 
 export default am_content;

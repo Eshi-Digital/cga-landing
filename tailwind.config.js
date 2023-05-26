@@ -27,24 +27,19 @@ module.exports = {
           ...defaultTheme.fontFamily.sans,
         ],
       },
+      backgroundImage: {
+        hero: "url('/static/images/hero.png')",
+      },
       colors: {
         primary: "#2D5859",
         secondary: "#EDF1FA",
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
     },
-    backgroundImage: {
-      hero: "url('/static/images/hero.png')",
-    },
-    variants: {
-      extend: {
-        visibility: ["group-hover"],
-      },
-    },
+    // variants: {
+    //   extend: {
+    //     visibility: ["group-hover"],
+    //   },
+    // },
   },
   plugins: [
     require("@tailwindcss/typography"),

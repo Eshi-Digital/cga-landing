@@ -6,6 +6,8 @@ const en_content = {
   membership_link: "Membership",
   research_link: "Research",
   contact_link: "Contact",
+  vacancy_link: "Vacancy",
+  blog_link: "Blog",
 };
 
 export default en_content;

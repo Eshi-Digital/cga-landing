@@ -41,18 +41,14 @@ const NavigationBar = () => {
 
   return (
     <header>
-      <nav className="flex justify-between items-center">
+      <nav className="flex justify-between items-center py-5">
         <div className="flex items-center gap-16 pl-4 md:pl-8 lg:pt-0">
-          <Image
-            src={Logo}
-            alt="Wegenawi Logo"
-            className="relative top-4 lg:top-0"
-          />
+          <Image src={Logo} alt="Wegenawi Logo" className="relative lg:top-0" />
         </div>
         {/* Mobile Button */}
         <div
           onClick={handleNav}
-          className="block lg:hidden z-10 mr-3 pl-8 pt-10 pr-5"
+          className="block lg:hidden z-10 mr-3 pl-8 pr-5"
         >
           {!nav && <AiOutlineMenu className="cursor-pointer" size={20} />}
         </div>
@@ -96,13 +92,13 @@ const NavigationBar = () => {
                 <li>{currentLocale.event_link}</li>
               </div>
             </Link>
-            <Link href="/about" className="flex items-end">
+            <Link href="/blog" className="flex items-end">
               <div
                 className={`${
-                  router.asPath === "/about" && "font-poppins-semibold"
+                  router.asPath === "/blog" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.about_link}</li>
+                <li>{currentLocale.blog_link}</li>
               </div>
             </Link>
             <Link href="/membership" className="flex items-end">
@@ -121,6 +117,15 @@ const NavigationBar = () => {
                 }`}
               >
                 <li>{currentLocale.research_link}</li>
+              </div>
+            </Link>
+            <Link href="/vacancy" className="flex items-end">
+              <div
+                className={`${
+                  router.asPath === "/vacancy" && "font-poppins-semibold"
+                }`}
+              >
+                <li>{currentLocale.vacancy_link}</li>
               </div>
             </Link>
             <Link href="/contact" className="flex items-end">
@@ -210,7 +215,7 @@ const NavigationBar = () => {
 
         {/* Desktop menu */}
         <div className="hidden lg:flex w-full md:items-center md:w-auto">
-          <ul className="flex gap-16">
+          <ul className="flex gap-16 items-center">
             <Link href="/" className="flex items-end">
               <div
                 className={`${
@@ -238,13 +243,13 @@ const NavigationBar = () => {
                 <li>{currentLocale.event_link}</li>
               </div>
             </Link>
-            <Link href="/about" className="flex items-end">
+            <Link href="/blog" className="flex items-end">
               <div
                 className={`${
-                  router.asPath === "/about" && "font-poppins-semibold"
+                  router.asPath === "/blog" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.about_link}</li>
+                <li>{currentLocale.blog_link}</li>
               </div>
             </Link>
             <Link href="/membership" className="flex items-end">
@@ -263,6 +268,15 @@ const NavigationBar = () => {
                 }`}
               >
                 <li>{currentLocale.research_link}</li>
+              </div>
+            </Link>
+            <Link href="/vacancy" className="flex items-end">
+              <div
+                className={`${
+                  router.asPath === "/vacancy" && "font-poppins-semibold"
+                }`}
+              >
+                <li>{currentLocale.vacancy_link}</li>
               </div>
             </Link>
             <Link href="/contact" className="flex items-end">
