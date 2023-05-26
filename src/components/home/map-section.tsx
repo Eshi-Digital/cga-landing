@@ -5,7 +5,7 @@ const MapSection = ({ location, zoomLevel }: any) => {
   return (
     <div className="w-full h-[600px]">
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyCuAl75jpSgVnZK5ASTwvr5iArOz2Uk47g" }}
+        bootstrapURLKeys={{ key: "" }}
         defaultCenter={location}
         defaultZoom={zoomLevel}
       >

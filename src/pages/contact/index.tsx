@@ -1,3 +1,4 @@
+import AddressAndContactForm from "@/components/contact/address-and-contact-form";
 import MapSection from "@/components/home/map-section";
 import Footer from "@/components/shared/footer";
 import Header from "@/components/shared/header";
@@ -21,7 +22,8 @@ const Contact: NextPage = () => {
       </Head>
       <main>
         <NavigationBar />
-        <Header />
+        <Header name="Feel Free to Contact Us!" />
+        <AddressAndContactForm />
         <MapSection location={location} zoomLevel={17} />
         <Footer />
       </main>
