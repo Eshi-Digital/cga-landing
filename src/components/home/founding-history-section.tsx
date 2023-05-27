@@ -4,7 +4,7 @@ import Founders from "../../../public/static/images/founders.png";
 
 const FoundingSection = () => {
   return (
-    <div className="py-12 flex flex-col bg-secondary w-full px-20 gap-4">
+    <div className="py-12 flex flex-col bg-secondary w-full px-4 xl:px-20 gap-4">
       <div className="font-PoiretOne-Regular text-4xl">Founders History</div>
       <div>People behind this huge company</div>
       <div className="mb-10 font-poppins-light">
@@ -29,10 +29,10 @@ const FoundingSection = () => {
         <div className="relative flex justify-center">
           <Image
             src={Founders}
-            className="group-hover:invisible"
+            className="xl:group-hover:invisible"
             alt="founding members"
           />
-          <div className="flex flex-col absolute top-4 invisible group-hover:visible bg-white w-full py-16 justify-start max-w-7xl mx-auto rounded-3xl">
+          <div className="hidden xl:flex flex-col absolute top-4 invisible xl:group-hover:visible bg-white w-full py-16 justify-start max-w-7xl mx-auto rounded-3xl">
             <div className="font-poppins-regular text-3xl text-blue-400 mb-10 text-center">
               This picture shows 12 founders out of 15
             </div>

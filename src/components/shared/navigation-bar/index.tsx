@@ -214,7 +214,7 @@ const NavigationBar = () => {
         </div>
 
         {/* Desktop menu */}
-        <div className="hidden lg:flex w-full md:items-center md:w-auto">
+        <div className="hidden xl:flex w-full md:items-center md:w-auto">
           <ul className="flex gap-16 items-center">
             <Link href="/" className="flex items-end">
               <div
