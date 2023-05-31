@@ -195,7 +195,7 @@ const NavigationBar = () => {
                   EMAIL
                 </p>
                 <div className="mt-2 font-poppins-medium text-sm">
-                  info@cga.com
+                  info@cgaethiopia.org
                 </div>
               </div>
               <div className="mt-8 mb-20">
@@ -203,10 +203,10 @@ const NavigationBar = () => {
                   PHONE NUMBERS
                 </p>
                 <div className="mt-2 font-poppins-medium text-sm">
-                  +251 - 911 11 11 11
+                  Tel. +251 115 159 051
                 </div>
                 <div className="mt-2 font-poppins-medium text-sm">
-                  +251 - 911 11 11 11
+                  Fax. +251 115 152 862
                 </div>
               </div>
             </div>

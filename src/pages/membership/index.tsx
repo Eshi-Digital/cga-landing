@@ -1,4 +1,5 @@
 import MembershipFee from "@/components/membership/membershipFee";
+import MembershipForm from "@/components/membership/membershipForm";
 import MembershipTypeAndCriteriaSection from "@/components/membership/membershipType";
 import Footer from "@/components/shared/footer";
 import Header from "@/components/shared/header";
@@ -19,6 +20,7 @@ const Membership: NextPage = () => {
         <Header name="Membership" />
         <MembershipTypeAndCriteriaSection />
         <MembershipFee />
+        <MembershipForm />
         <Footer />
       </main>
     </div>

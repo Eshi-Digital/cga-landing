@@ -16,7 +16,7 @@ const Vacant: NextPage = () => {
       </Head>
       <main>
         <NavigationBar />
-        <Header />
+        <Header name="Vacancy" />
         <JobCategorySection />
         <VacancySection />
         <Footer />
