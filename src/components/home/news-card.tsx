@@ -3,8 +3,8 @@ import News from "../../../public/static/images/news.png";
 
 const NewsCard = () => {
   return (
-    <div className="flex flex-col gap-4 items-center rounded-lg shadow-lg pb-10 max-w-xs">
-      <Image src={News} alt="News" />
+    <div className="flex flex-col gap-4 items-center w-full rounded-lg shadow-lg pb-10 px-4">
+      <Image src={News} alt="News" className="w-full" />
       <div className="flex gap-4 text-gray-500 text-sm">
         <div>By: Admin</div>
         <div>06 Aug 2017</div>

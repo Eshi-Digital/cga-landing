@@ -3,9 +3,9 @@ import NewsCard from "./news-card";
 
 const NewsSection = () => {
   return (
-    <div className="flex flex-col gap-12 items-center py-20 max-w-5xl mx-auto">
+    <div className="flex flex-col gap-12 items-center py-10 md:py-20 max-w-5xl mx-auto">
       <div className="text-3xl">Latest News</div>
-      <div className="flex gap-8">
+      <div className="flex gap-8 w-full md:max-w-7xl flex-col md:flex-row">
         <NewsCard />
         <NewsCard />
         <NewsCard />

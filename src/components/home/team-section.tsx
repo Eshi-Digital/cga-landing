@@ -11,16 +11,16 @@ const TeamSection = () => {
   };
 
   return (
-    <div className="text-center py-32">
-      <p className="font-poppins-medium text-lg mb-10">Team</p>
+    <div className="text-center py-10 md:py-32">
+      <p className="font-poppins-medium text-lg mb-6 md:mb-10">Team</p>
       <h1 className="text-3xl mb-8">Board Members</h1>
-      <p className="max-w-4xl mx-auto text-gray-500 mb-16">
+      <p className="max-w-4xl mx-auto text-gray-500 mb-8 md:mb-16">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae
         harum adipisci distinctio minus accusantium beatae consectetur quisquam
         ab molestiae aut?
       </p>
       <div
-        className="flex overflow-x-auto p-4 gap-8 max-w-7xl mx-auto scrollbar-hide mb-4"
+        className="flex overflow-x-auto p-4 gap-8 w-full md:max-w-7xl mx-auto scrollbar-hide mb-4"
         ref={ref}
       >
         <TeamCard />
