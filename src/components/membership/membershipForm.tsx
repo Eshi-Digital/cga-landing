@@ -1,6 +1,15 @@
-import { useState } from "react";
+import {
+  clearCreateMembership,
+  createMembershipAsync,
+} from "@/store/features/membership/membership.slice";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const MembershipForm = () => {
+  /**
+   * states
+   */
   const [state, setState] = useState({
     firstName: "",
     lastName: "",
@@ -11,9 +20,77 @@ const MembershipForm = () => {
 
   const [gender, setGender] = useState("Male");
 
+  /**
+   * hooks
+   */
+  const dispatch = useDispatch<any>();
+
+  /**
+   * selectors
+   */
+  const {
+    createMembershipLoading,
+    createMembershipSuccess,
+    createMembershipError,
+  } = useSelector((state: any) => state.membership);
+
+  /**
+   * functions
+   */
   function handleChange(e: any) {
     setState({ ...state, [e.target.name]: e.target.value });
   }
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const result = {
+      name: `${state.firstName} ${state.lastName}`,
+      email: state.email,
+      phone: state.phone,
+      message: state.message,
+    };
+    dispatch(createMembershipAsync(result));
+  };
+
+  /**
+   * yup validation schema
+   */
+
+  /**
+   * formik
+   */
+
+  /**
+   * effects
+   */
+  useEffect(() => {
+    if (createMembershipSuccess) {
+      toast.success(
+        "Membership created successfully. Contact the admin for further progress.",
+        {
+          theme: "colored",
+        }
+      );
+      dispatch(clearCreateMembership());
+      setState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    }
+    if (createMembershipError) {
+      toast.error(createMembershipError, {
+        theme: "colored",
+      });
+    }
+  }, [createMembershipSuccess, createMembershipError]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /**
+   * variables
+   */
+
   return (
     <div className="max-w-7xl mx-auto px-5 pb-10">
       <h1 className="pb-4 text-2xl uppercase w-full text-center">
@@ -83,9 +160,15 @@ const MembershipForm = () => {
             required
           />
         </div>
-        <button className="flex justify-center w-full pt-10">
-          <span>Submit</span>
-        </button>
+        <div className="w-full flex justify-center items-center mt-10">
+          <button
+            onClick={handleSubmit}
+            disabled={createMembershipLoading}
+            className="flex justify-center hover:underline"
+          >
+            <span>Submit</span>
+          </button>
+        </div>
       </form>
     </div>
   );
