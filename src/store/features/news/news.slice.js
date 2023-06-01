@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   fetchNewsError: null,
 
   news: [],
+  selectedNews: null,
 };
 
 export const fetchNewsAsync = createAsyncThunk(

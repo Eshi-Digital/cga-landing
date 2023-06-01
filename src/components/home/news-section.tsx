@@ -21,10 +21,11 @@ const NewsSection = () => {
       {fetchNewsLoading ? (
         <div className="text-md">Loading...</div>
       ) : (
-        <div className="flex gap-8 w-full md:max-w-7xl flex-col md:flex-row">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full md:max-w-7xl flex-col md:flex-row">
           {news.map((item: any) => (
             <NewsCard
               key={item.id}
+              image={item.image}
               author={item.author}
               title={item.title}
               content={item.content}

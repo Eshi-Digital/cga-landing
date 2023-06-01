@@ -18,25 +18,56 @@ interface NewsProp {
 const BlogMainSecton = () => {
   const dispatch = useDispatch<any>();
 
-  const { fetchNewsLoading, news } = useSelector((state: any) => state.news);
+  const [newses, setNews] = useState<NewsProp[]>();
+
+  const { fetchNewsSuccess, fetchNewsLoading, news } = useSelector(
+    (state: any) => state.news
+  );
 
   useEffect(() => {
     dispatch(fetchNewsAsync());
   }, []);
 
+  useEffect(() => {
+    if (fetchNewsSuccess) {
+      setNews(news);
+    }
+  }, [fetchNewsSuccess]);
+
   return (
     <div className="max-w-7xl mx-auto mb-10">
-      <p className="px-8 py-10">{news[0].description}</p>
-      <div className="mt-16 grid grid-col-1 md:grid-col-2 lg:grid-cols-3 gap-10 py-4 md:py-0">
-        {news.map((item: any) => (
-          <NewsCard
-            key={item.id}
-            author={item.author}
-            title={item.title}
-            content={item.content}
-            publishedDate={item.publishedDate}
-          />
-        ))}
+      <p
+        className="px-8 py-10"
+        dangerouslySetInnerHTML={{
+          __html: newses?.length == 0 ? "loading..." : newses![0].content,
+        }}
+      ></p>
+      <div className="mt-16 grid gap-10 py-4 md:py-0">
+        {newses?.length == 0 ? (
+          <div className="text-md">Loading...</div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 w-full md:max-w-7xl flex-col md:flex-row">
+            {newses!.map((item: any) => (
+              <div
+                className={`${
+                  item.id == e.id && "border-2 border-dashed border-primary"
+                } cursor-pointer`}
+                onClick={() => {
+                  setEvent(e);
+                }}
+              >
+                <NewsCard
+                  key={item.id}
+                  image={item.image}
+                  author={item.author}
+                  title={item.title}
+                  content={item.content}
+                  publishedDate={item.publishedDate}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
