@@ -1,7 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import api from "../../../utils/axios";
+import api from "@/utils/axios";
 
-const INITIAL_STATE = {
+interface IEvent {
+  fetchEventsLoading: boolean;
+  fetchEventsSuccess: boolean;
+  fetchEventsError: Error | null;
+  events: any[];
+}
+
+const INITIAL_STATE: IEvent = {
   fetchEventsLoading: false,
   fetchEventsSuccess: false,
   fetchEventsError: null,
@@ -15,7 +22,7 @@ export const fetchEventsAsync = createAsyncThunk(
     try {
       const response = await api.get("/events");
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return rejectWithValue(error.response.data);
     }
   }
@@ -38,7 +45,7 @@ const eventSlice = createSlice({
       })
       .addCase(fetchEventsAsync.rejected, (state, action) => {
         state.fetchEventsLoading = false;
-        state.fetchEventsError = action.payload;
+        state.fetchEventsError = action.payload as Error;
       });
   },
 });
