@@ -21,7 +21,7 @@ const NewsCard = ({
       <Image
         width={300}
         height={200}
-        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/public/images/news/${image}`}
+        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/images/news/${image}`}
         alt="News"
         className="w-full"
       />
