@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const AnoutMembershipSection = () => {
+  const router = useRouter();
   return (
     <div className="px-2 flex flex-col md:flex-row items-start py-4 md:py-20 max-w-7xl mx-auto gap-20">
       <div className="w-full md:w-1/2">
@@ -24,7 +26,7 @@ const AnoutMembershipSection = () => {
           services towards the growth of the Association. Please visit our pages
           and learn more about our Association.
         </div>
-        <div className="flex gap-8 items-center">
+        {/* <div className="flex gap-8 items-center">
           <div className="hidden sm:flex rounded-full w-20 h-20 bg-red-100"></div>
           <div className="flex flex-col gap-2">
             <div className="text-md">By laws association of CGA</div>
@@ -36,6 +38,16 @@ const AnoutMembershipSection = () => {
           <div className="flex flex-col gap-2">
             <div className="text-md">By laws association of CGA</div>
             <div className="text-blue-400">Download here</div>
+          </div>
+        </div> */}
+        <div className="flex-col md:flex-row flex gap-8">
+          <div
+            className="bg-primary rounded-full px-12 py-3 text-white cursor-pointer"
+            onClick={() => {
+              router.push("/about");
+            }}
+          >
+            Learn more
           </div>
         </div>
       </div>

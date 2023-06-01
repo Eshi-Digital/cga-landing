@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { MdArrowForwardIos } from "react-icons/md";
 
 const AboutUsCard = ({
@@ -12,6 +13,7 @@ const AboutUsCard = ({
   icon: string;
   color: string;
 }) => {
+  const router = useRouter();
   return (
     <div className="py-12 w-full xl:w-80 flex flex-col items-center gap-5 shadow-md px-4 rounded-lg">
       <div>
@@ -23,7 +25,12 @@ const AboutUsCard = ({
       </div>
       <div>{title}</div>
       <div className="text-center">{description}</div>
-      <div className="flex flex-row gap-4 justify-end w-full items-center">
+      <div
+        className="flex flex-row gap-4 justify-end w-full items-center cursor-pointer"
+        onClick={() => {
+          router.push("/about");
+        }}
+      >
         <div>View more</div>
         <div className="rounded-full w-10 h-10 bg-blue-200 flex justify-center items-center">
           <MdArrowForwardIos />
