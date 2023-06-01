@@ -72,7 +72,7 @@ const EventMainSecton = () => {
                   setEvent(e);
                 }}
               >
-                <EventCard />;
+                <EventCard />
               </div>
             );
           })}
