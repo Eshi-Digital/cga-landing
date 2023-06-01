@@ -32,8 +32,8 @@ const BlogMainSecton = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
+      <p className="px-8 py-10">{blog.description}</p>
       <div className="mt-16 grid grid-col-1 md:grid-col-2 lg:grid-cols-3 gap-10 py-4 md:py-0">
-        <p className="px-8">{blog.description}</p>
         {blogs.map((e) => {
           return (
             <div
