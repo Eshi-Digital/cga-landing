@@ -21,7 +21,7 @@ export const fetchEventsAsync = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await api.get("/events");
-      return response.data;
+      return response;
     } catch (error: any) {
       return rejectWithValue(error.response.data);
     }
@@ -38,7 +38,9 @@ const eventSlice = createSlice({
         state.fetchEventsLoading = true;
       })
       .addCase(fetchEventsAsync.fulfilled, (state, action) => {
-        const { events } = action.payload;
+        const {
+          data: { events },
+        } = action.payload;
         state.fetchEventsLoading = false;
         state.fetchEventsSuccess = true;
         state.events = events;

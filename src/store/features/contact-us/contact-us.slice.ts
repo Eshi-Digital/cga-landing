@@ -52,7 +52,6 @@ const contactUsSlice = createSlice({
         state.sendContactUsSuccess = true;
       })
       .addCase(sendContactUsAsync.rejected, (state: any, action: any) => {
-        console.log(action);
         state.sendContactUsLoading = false;
         state.sendContactUsError = action.payload as Error;
       });
