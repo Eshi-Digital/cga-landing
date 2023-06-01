@@ -1,10 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "../../../utils/axios";
 
-const INITIAL_STATE = {
+interface IVacancy {
+  fetchVacanciesLoading: boolean;
+  fetchVacanciesSuccess: boolean;
+  fetchVacanciesError: Error | null;
+  vacancies: any[];
+}
+
+const INITIAL_STATE: IVacancy = {
   fetchVacanciesLoading: false,
   fetchVacanciesSuccess: false,
-  fetchVacanciesError: false,
+  fetchVacanciesError: null,
 
   vacancies: [],
 };
@@ -15,7 +22,7 @@ export const fetchVacanciesAsync = createAsyncThunk(
     try {
       const response = await api.get("/vacancies");
       return response;
-    } catch (error) {
+    } catch (error: any) {
       return rejectWithValue({ error: error.message });
     }
   }
@@ -40,7 +47,7 @@ const vacancySlice = createSlice({
       })
       .addCase(fetchVacanciesAsync.rejected, (state, action) => {
         state.fetchVacanciesLoading = false;
-        state.fetchVacanciesError = action.payload;
+        state.fetchVacanciesError = action.payload as Error;
       });
   },
 });

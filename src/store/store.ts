@@ -5,8 +5,8 @@ import thunk from "redux-thunk";
 
 import eventSlice from "./features/event/event.slice";
 import newsSlice from "./features/news/news.slice";
-import vacancySlice from "./features/vacancy/vacanct.slice";
 import contactUsSlice from "./features/contact-us/contact-us.slice";
+import vacancySlice from "./features/vacancy/vacanct.slice";
 
 const store = configureStore({
   reducer: combineReducers({
