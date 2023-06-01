@@ -16,30 +16,64 @@ interface NewsProp {
 }
 
 const BlogMainSecton = () => {
+  /**
+   * states
+   */
+  const [newses, setNews] = useState<NewsProp[]>();
+  const [singleNews, setSingleNews] = useState<NewsProp | null>(null);
+
+  /**
+   * hooks
+   */
   const dispatch = useDispatch<any>();
 
-  const [newses, setNews] = useState<NewsProp[]>();
-
+  /**
+   * selectors
+   */
   const { fetchNewsSuccess, fetchNewsLoading, news } = useSelector(
     (state: any) => state.news
   );
 
+  /**
+   * functions
+   */
+
+  /**
+   * yup validation schema
+   */
+
+  /**
+   * formik
+   */
+
+  /**
+   * effects
+   */
   useEffect(() => {
     dispatch(fetchNewsAsync());
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if (fetchNewsSuccess) {
+    if (news.length > 0) {
+      setSingleNews(news[0]);
       setNews(news);
     }
-  }, [fetchNewsSuccess]);
+  }, [fetchNewsSuccess]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /**
+   * variables
+   */
+
+  if (fetchNewsLoading || !newses) {
+    return <>Loading...</>;
+  }
 
   return (
     <div className="max-w-7xl mx-auto mb-10">
       <p
         className="px-8 py-10"
         dangerouslySetInnerHTML={{
-          __html: newses?.length == 0 ? "loading..." : newses![0].content,
+          __html: singleNews?.content!,
         }}
       ></p>
       <div className="mt-16 grid gap-10 py-4 md:py-0">
@@ -49,11 +83,13 @@ const BlogMainSecton = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 w-full md:max-w-7xl flex-col md:flex-row">
             {newses!.map((item: any) => (
               <div
+                key={item.id}
                 className={`${
-                  item.id == e.id && "border-2 border-dashed border-primary"
+                  singleNews == item.id &&
+                  "border-2 border-dashed border-primary"
                 } cursor-pointer`}
                 onClick={() => {
-                  setEvent(e);
+                  setSingleNews(item);
                 }}
               >
                 <NewsCard
