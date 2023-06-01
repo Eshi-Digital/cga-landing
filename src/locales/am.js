@@ -2,7 +2,7 @@ const am_content = {
   language: "አማርኛ",
   home_link: "መግቢያ",
   about_link: "ስለእኛ",
-  event_link: "ዝርዝሮች እና ስብሰባዎች",
+  event_link: "ዝርዝሮች",
   membership_link: "አባልነት",
   research_link: "ምርምር",
   contact_link: "አድራሻ",

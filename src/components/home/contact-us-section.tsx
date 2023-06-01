@@ -17,20 +17,20 @@ const ContactUsSection = () => {
               <input
                 type="text"
                 placeholder="Name"
-                className="border-2 border-gray-300 p-2 rounded-md"
+                className="border-1 border-gray-300 p-2 rounded-md"
               />
               <input
                 type="email"
                 placeholder="Email"
-                className="border-2 border-gray-300 p-2 rounded-md"
+                className="border-1 border-gray-300 p-2 rounded-md"
               />
               <textarea
                 placeholder="Message"
-                className="border-2 border-gray-300 p-2 rounded-md"
+                className="border-1 border-gray-300 p-2 rounded-md"
               />
               <button
                 type="submit"
-                className="bg-blue-500 text-white p-2 rounded-md"
+                className="bg-primary text-white p-2 rounded-md"
               >
                 Send
               </button>

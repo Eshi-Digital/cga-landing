@@ -1,7 +1,9 @@
 import { MdArrowRight } from "react-icons/md";
 import NewsCard from "./news-card";
+import { useRouter } from "next/router";
 
 const NewsSection = () => {
+  const router = useRouter();
   return (
     <div className="flex flex-col gap-12 items-center py-10 md:py-20 max-w-5xl mx-auto">
       <div className="text-3xl">Latest News</div>
@@ -10,7 +12,12 @@ const NewsSection = () => {
         <NewsCard />
         <NewsCard />
       </div>
-      <div className="flex gap-4 justify-end items-center w-full">
+      <div
+        className="flex gap-4 justify-end items-center w-full cursor-pointer"
+        onClick={() => {
+          router.push("/blog");
+        }}
+      >
         <div>View All</div>
         <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center">
           <MdArrowRight />
