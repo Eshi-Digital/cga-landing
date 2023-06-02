@@ -1,4 +1,8 @@
 import AboutUsCard from "./about-us-card";
+import { getLocaleContent } from "../../utils/localeUtil";
+import { useRouter } from "next/router";
+
+
 
 interface HomeAboutUsProps {
   title: string;
@@ -8,25 +12,29 @@ interface HomeAboutUsProps {
 }
 
 const AboutUsSection = () => {
+  const router = useRouter();
+
+    const localized = getLocaleContent(router.locale as string);
+
   const aboutUs: HomeAboutUsProps[] = [
     {
-      title: "CGA Profile",
+      title: localized.cga_profile,
       description:
-        "Said be brought bel also fills kind face creepeth gathired their sine good under is beast",
+       localized.profile_sub,
       icon: "/static/icons/svgs/cga_profile.svg",
       color: "bg-red-200",
     },
     {
-      title: "Membership",
+      title:localized.membership_title,
       description:
-        "Said be brought bel also fills kind face creepeth gathired their sine good under is beast",
+       localized.membership_sub,
       icon: "/static/icons/svgs/cga_membership.svg",
       color: "bg-green-200",
     },
     {
       title: "Facilities",
       description:
-        "Said be brought bel also fills kind face creepeth gathired their sine good under is beast",
+       localized.facilities_subt,
       icon: "/static/icons/svgs/cga_facilities.svg",
       color: "bg-blue-200",
     },
@@ -36,14 +44,12 @@ const AboutUsSection = () => {
     <div className="flex flex-col items-center justify-center py-4 md:py-28">
       <div className="mb-8">
         <h1 className="text-4xl font-extralight text-center">
-          Something About Us
+        {localized.about_title}
         </h1>
       </div>
       <div className="max-w-5xl">
         <p className="text-center">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam,
-          sed mollitia laboriosam eius tempora modi eos asperiores alias
-          possimus recusandae minima voluptatem dolorem praesentium.
+         {localized.about_subtitle}
         </p>
       </div>
       <div className="flex flex-col px-2 md:flex-row xl:mx-20 xl:gap-14 gap-4 my-8">

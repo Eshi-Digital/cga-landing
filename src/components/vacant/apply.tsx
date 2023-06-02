@@ -7,6 +7,7 @@ import {
 } from "framer-motion";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { MdChangeCircle, MdRemove } from "react-icons/md";
 
 interface FilterProps {
   filter: boolean;
@@ -27,7 +28,11 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
     message: "",
   });
 
-  const [gender, setGender] = useState("Male");
+  const [file, setFile] = useState<File | null>(null);
+
+  function handleFileChange(e: any) {
+    setFile(e.target.files[0]);
+  }
 
   function handleChange(e: any) {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -60,30 +65,31 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pt-10">
-              <div>
-                <div className="text-2xl font-poppins-medium text-black">
-                  Apply
-                </div>
+              <div className="text-2xl font-poppins-medium text-black">
+                Apply
               </div>
               <button
                 onClick={() => setFilter(!filter)}
-                className="bg-white text-black h-8 w-8 block mb-2 rounded-full cursor-pointer"
+                className="bg-white text-black h-4 w-4 block rounded-full cursor-pointer"
               >
-                <AiOutlineCloseCircle size={40} className="text-red-main" />
+                <AiOutlineCloseCircle size={30} className="text-red-main" />
               </button>
             </div>
 
             <div className="mt-8 px-4 py-6 rounded-md">
               <form>
-                <div className="flex flex-col gap-8 w-full">
+                <div className="flex flex-col gap-4 w-full">
                   <div className="flex flex-col items-start">
-                    <label htmlFor="name" className="text-black">
+                    <label
+                      htmlFor="name"
+                      className="text-black text-sm font-poppins-semibold"
+                    >
                       Name
                     </label>
                     <input
                       name="name"
                       type="text"
-                      className="w-full"
+                      className="w-full border-1 border-gray-300 p-2 rounded-md"
                       placeholder="Enter name"
                       onChange={handleChange}
                       value={state.name}
@@ -91,13 +97,16 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
                     />
                   </div>
                   <div className="flex flex-col items-start">
-                    <label htmlFor="email" className="text-black">
+                    <label
+                      htmlFor="email"
+                      className="text-black text-sm font-poppins-semibold"
+                    >
                       Email
                     </label>
                     <input
                       name="email"
                       type="email"
-                      className="w-full"
+                      className="w-full border-1 border-gray-300 p-2 rounded-md"
                       placeholder="Enter email"
                       onChange={handleChange}
                       value={state.email}
@@ -107,13 +116,16 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
                 </div>
                 <div className="flex flex-col gap-8 w-full pt-5">
                   <div className="flex flex-col items-start">
-                    <label htmlFor="phone" className="text-black">
+                    <label
+                      htmlFor="phone"
+                      className="text-black text-sm font-poppins-semibold"
+                    >
                       Phone
                     </label>
                     <input
                       name="phone"
                       type="text"
-                      className="w-full"
+                      className="w-full border-1 border-gray-300 p-2 rounded-md"
                       placeholder="Enter phone"
                       onChange={handleChange}
                       value={state.phone}
@@ -122,11 +134,45 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
                   </div>
                 </div>
                 <div className="flex flex-col pt-5 items-start w-full">
-                  <label htmlFor="phone" className="text-black">
+                  <label
+                    htmlFor="phone"
+                    className="text-black text-sm font-poppins-semibold"
+                  >
+                    CV
+                  </label>
+                  {file == null ? (
+                    <input
+                      type="file"
+                      className="w-full border-1 border-gray-300 p-2 rounded-md"
+                      name="cv"
+                      placeholder="Enter file"
+                      onChange={handleFileChange}
+                      value={state.phone}
+                      required
+                    />
+                  ) : (
+                    <div className="text-black border p-2 rounded-md flex items-center gap-2">
+                      <span>CV added</span>
+                      <span
+                        className="cursor-pointer"
+                        onClick={() => {
+                          setFile(null);
+                        }}
+                      >
+                        <MdRemove className="text-primary" size={20} />
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-col pt-5 items-start w-full">
+                  <label
+                    htmlFor="phone"
+                    className="text-black text-sm font-poppins-semibold"
+                  >
                     Message
                   </label>
                   <textarea
-                    className="w-full"
+                    className="w-full border-1 border-gray-300 p-2 rounded-md"
                     name="message"
                     placeholder="Enter message"
                     onChange={handleChange}
@@ -134,8 +180,11 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
                     required
                   />
                 </div>
-                <button className="flex justify-center w-full pt-10">
-                  <span className="text-black">Submit</span>
+                <button
+                  type="submit"
+                  className="bg-primary text-white p-2 rounded-md w-full mt-5"
+                >
+                  Send
                 </button>
               </form>
             </div>

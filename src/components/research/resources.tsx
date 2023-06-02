@@ -1,6 +1,10 @@
 import ResourceCard from "./resource-card";
+import { useRouter } from "next/router";
+import { getLocaleContent } from "../../utils/localeUtil";
 
 const ResourcesSection = () => {
+    const router = useRouter();
+    const localized = getLocaleContent(router.locale as string);
   const publications = [
     {
       name: "Delegation A God Ordained Principle.pdf",
@@ -63,11 +67,7 @@ const ResourcesSection = () => {
   return (
     <div className="py-20 max-w-7xl mx-auto text-center">
       <p className="mb-10">
-        There are numerous papers that were published in the official magazines
-        and yearbooks of the Association. Some articles are referenced here for
-        detail reading The Association approaches its members and associate
-        members to contribute papers whenever it issues seasonal magazines.
-        Copies of such papers are available in the Association archive
+       {localized.research_content}
       </p>
       <div className="grid sm:grid-col-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:my-0">
         {publications.map((e) => {

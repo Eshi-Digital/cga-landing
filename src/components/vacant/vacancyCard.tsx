@@ -1,33 +1,70 @@
 import Image from "next/image";
 import Logo from "../../../public/static/images/logo_only.png";
-import { MdLocationPin } from "react-icons/md";
-import { AiFillClockCircle } from "react-icons/ai";
+import { MdAttachMoney, MdLocationPin } from "react-icons/md";
+import { FaMoneyBillWave } from "react-icons/fa";
+import { BsCheck2 } from "react-icons/bs";
 
-const VacancyCard = () => {
+const VacancyCard = ({
+  type,
+  description,
+  requirements,
+  salary,
+  availableSlots,
+  applicationDeadline,
+}: {
+  type: string;
+  description: string;
+  requirements: string[];
+  salary: string;
+  availableSlots: string;
+  applicationDeadline: string;
+}) => {
   return (
     <div className="flex flex-col gap-4 items-start shadow-md px-4 py-8 rounded-2xl">
       <div>
         <Image src={Logo} alt="logo" />
       </div>
       <div>CGA</div>
-      <div className="font-poppins-semibold">Female Human resouce manager</div>
-      <div className="text-sm text-gray-500 text-left">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore velit et
-        corporis animi hic explicabo deleniti iure molestiae totam facilis unde
-        accusantium, incidunt architecto.
+      <div className="font-poppins-semibold">{type}</div>
+      <div
+        className="text-sm text-gray-500 text-left"
+        dangerouslySetInnerHTML={{
+          __html: description,
+        }}
+      />
+      <div>
+        <div>
+          {requirements.map((requirement: any) => (
+            <div key={requirement} className="flex items-center gap-4">
+              <BsCheck2 className="text-primary" size={20} />
+              {requirement}
+            </div>
+          ))}
+        </div>
+        <div></div>
       </div>
       <div className="flex justify-between gap-12">
         <div className="flex items-center gap-4">
           <div>
-            <AiFillClockCircle className="text-primary" size={20} />
+            <FaMoneyBillWave className="text-primary" size={20} />
           </div>
-          <div className="text-sm text-left">Full Time</div>
+          <div className="text-sm text-left">{`${salary} ETB`}</div>
         </div>
         <div className="flex items-center gap-4">
-          <div>
-            <MdLocationPin className="text-primary" size={20} />
+          <div>Available Positions:</div>
+          <div className="text-sm text-left">{availableSlots}</div>
+        </div>
+      </div>
+      <div>
+        <div className="flex items-center gap-4">
+          <div>Application Deadline:</div>
+          <div className="text-left">
+            {new Date(applicationDeadline).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </div>
-          <div className="text-sm text-left">bole, Addis Ababa, Ethiopia</div>
         </div>
       </div>
       <hr />
