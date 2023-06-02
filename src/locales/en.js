@@ -8,6 +8,7 @@ const en_content = {
   contact_link: "Contact",
   vacancy_link: "Vacancy",
   blog_link: "Blog",
+  
 };
 
 export default en_content;
