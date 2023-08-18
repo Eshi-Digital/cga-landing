@@ -38,7 +38,11 @@ export const applyVacancyAsync = createAsyncThunk(
   "vacancy/applyVacancyAsync",
   async (vacancyForm: FormData, { rejectWithValue }) => {
     try {
-      const response = await api.post(`/applicants`, vacancyForm);
+      const response = await api.post(`/applicants`, vacancyForm, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       return response;
     } catch (error: any) {
       return rejectWithValue({ error: error.message });

@@ -12,6 +12,7 @@ interface IEvent {
   createResearchSuccess: boolean;
   createResearchError: Error | null;
 
+  code: string | null;
   researches: any[];
   events: any[];
 }
@@ -27,6 +28,7 @@ const INITIAL_STATE: IEvent = {
   createResearchSuccess: false,
   createResearchError: null,
 
+  code: null,
   researches: [],
   events: [],
 };
@@ -59,7 +61,11 @@ export const createResearchAsync = createAsyncThunk(
   "event/createResearch",
   async (data: any, { rejectWithValue }) => {
     try {
-      const response = await api.post("/researches", data);
+      const response = await api.post("/researches", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       return response;
     } catch (error: any) {
       return rejectWithValue(error.response.data);
@@ -113,6 +119,10 @@ const eventSlice = createSlice({
         state.createResearchLoading = true;
       })
       .addCase(createResearchAsync.fulfilled, (state, action) => {
+        const {
+          data: { research },
+        } = action.payload;
+        state.code = research.code;
         state.createResearchLoading = false;
         state.createResearchSuccess = true;
       })
@@ -122,5 +132,7 @@ const eventSlice = createSlice({
       });
   },
 });
+
+export const { clearCreateResearch } = eventSlice.actions;
 
 export default eventSlice;

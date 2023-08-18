@@ -62,14 +62,13 @@ const Filter = ({ filter = false, setFilter, vacancyId }: FilterProps) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(state.vacancyId);
 
     const formData = new FormData();
     formData.append("name", state.name);
     formData.append("email", state.email);
     formData.append("phone", state.phone);
     formData.append("message", state.message);
-    formData.append("cv", state.cv as File);
+    formData.append("cv", file as File);
     formData.append("vacancyId", vacancyId);
 
     dispatch(applyVacancyAsync(formData));
@@ -91,7 +90,7 @@ const Filter = ({ filter = false, setFilter, vacancyId }: FilterProps) => {
       });
     }
     if (applyVacancyError) {
-      toast.error("Error sending application", {
+      toast.error(`Error sending application, ${applyVacancyError.message}`, {
         theme: "colored",
       });
       dispatch(clearApplyVacancy());

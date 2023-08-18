@@ -11,9 +11,9 @@ import { MdChangeCircle, MdRemove } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {
-  applyVacancyAsync,
-  clearApplyVacancy,
-} from "@/store/features/vacancy/vacanct.slice";
+  createResearchAsync,
+  clearCreateResearch,
+} from "@/store/features/event/event.slice";
 
 interface FilterProps {
   filter: boolean;
@@ -21,11 +21,7 @@ interface FilterProps {
   vacancyId: string;
 }
 
-const CreateResearch = ({
-  filter = false,
-  setFilter,
-  vacancyId,
-}: FilterProps) => {
+const CreateResearch = ({ filter = false, setFilter }: FilterProps) => {
   const ref = useRef(null);
 
   const [type, setType] = useState("ShortTerm");
@@ -34,15 +30,19 @@ const CreateResearch = ({
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch<any>();
-  const { applyVacancyLoading, applyVacancySuccess, applyVacancyError } =
-    useSelector((state: any) => state.vacancy);
+  const {
+    createResearchSuccess,
+    createResearchLoading,
+    createResearchError,
+    code,
+  } = useSelector((state: any) => state.event);
 
   const [state, setState] = useState({
-    name: "",
+    title: "",
+    code: null,
+    note: "",
+    file: null,
     email: "",
-    phone: "",
-    message: "",
-    cv: null,
   });
 
   const [file, setFile] = useState<File | null>(null);
@@ -66,41 +66,39 @@ const CreateResearch = ({
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(state.vacancyId);
 
     const formData = new FormData();
-    formData.append("name", state.name);
+    formData.append("title", state.title);
+    formData.append("note", state.note);
+    formData.append("code", state.code);
     formData.append("email", state.email);
-    formData.append("phone", state.phone);
-    formData.append("message", state.message);
-    formData.append("cv", state.cv as File);
-    formData.append("vacancyId", vacancyId);
+    formData.append("file", file as File);
 
-    dispatch(applyVacancyAsync(formData));
+    dispatch(createResearchAsync(formData));
   };
 
   useEffect(() => {
-    if (applyVacancySuccess) {
-      toast.success("Application sent successfully", {
+    if (createResearchSuccess) {
+      toast.success(`Research sent successfully, your code is ${code}`, {
         theme: "colored",
       });
       setFilter(false);
-      dispatch(clearApplyVacancy());
+      dispatch(clearCreateResearch());
       setState({
-        name: "",
+        title: "",
+        note: "",
+        code: null,
         email: "",
-        phone: "",
-        message: "",
-        cv: null,
+        file: null,
       });
     }
-    if (applyVacancyError) {
-      toast.error("Error sending application", {
+    if (createResearchError) {
+      toast.error(`Error sending application, ${createResearchError.message}`, {
         theme: "colored",
       });
-      dispatch(clearApplyVacancy());
+      dispatch(clearCreateResearch());
     }
-  }, [applyVacancySuccess, applyVacancyError]);
+  }, [createResearchSuccess, createResearchError]);
 
   return (
     <AnimatePresence>
@@ -121,7 +119,7 @@ const CreateResearch = ({
           >
             <div className="flex items-center justify-between pt-10">
               <div className="text-2xl font-poppins-medium text-black">
-                Apply
+                Submit your research
               </div>
               <button
                 onClick={() => setFilter(!filter)}
@@ -136,16 +134,16 @@ const CreateResearch = ({
                 <div className="flex flex-col gap-4 w-full">
                   <div className="flex flex-col items-start">
                     <label
-                      htmlFor="name"
+                      htmlFor="title"
                       className="text-black text-sm font-poppins-semibold"
                     >
-                      Name
+                      Title
                     </label>
                     <input
-                      name="name"
+                      name="title"
                       type="text"
                       className="w-full border-1 border-gray-300 p-2 rounded-md text-black"
-                      placeholder="Enter name"
+                      placeholder="Enter title"
                       onChange={handleChange}
                       required
                     />
@@ -163,7 +161,6 @@ const CreateResearch = ({
                       className="w-full border-1 border-gray-300 p-2 rounded-md text-black"
                       placeholder="Enter email"
                       onChange={handleChange}
-                      value={state.email}
                       required
                     />
                   </div>
@@ -171,40 +168,39 @@ const CreateResearch = ({
                 <div className="flex flex-col gap-8 w-full pt-5">
                   <div className="flex flex-col items-start">
                     <label
-                      htmlFor="phone"
+                      htmlFor="code"
                       className="text-black text-sm font-poppins-semibold"
                     >
-                      Phone
+                      Code
                     </label>
                     <input
-                      name="phone"
+                      name="code"
                       type="text"
                       className="w-full border-1 border-gray-300 p-2 rounded-md text-black"
-                      placeholder="Enter phone"
+                      placeholder="Enter code"
                       onChange={handleChange}
-                      required
                     />
                   </div>
                 </div>
                 <div className="flex flex-col pt-5 items-start w-full">
                   <label
-                    htmlFor="phone"
+                    htmlFor="file"
                     className="text-black text-sm font-poppins-semibold"
                   >
-                    CV
+                    Research file
                   </label>
                   {file == null ? (
                     <input
                       type="file"
                       className="w-full border-1 border-gray-300 p-2 rounded-md text-black"
-                      name="cv"
-                      placeholder="Enter file"
+                      name="file"
+                      placeholder="Enter file (only PDF)"
                       onChange={handleFileChange}
-                      required
+                      required={true}
                     />
                   ) : (
                     <div className="text-black border p-2 rounded-md flex items-center gap-2">
-                      <span>CV added</span>
+                      <span>File added</span>
                       <span
                         className="cursor-pointer"
                         onClick={() => {
@@ -218,15 +214,15 @@ const CreateResearch = ({
                 </div>
                 <div className="flex flex-col pt-5 items-start w-full">
                   <label
-                    htmlFor="phone"
+                    htmlFor="note"
                     className="text-black text-sm font-poppins-semibold"
                   >
-                    Message
+                    Note
                   </label>
                   <textarea
                     className="w-full border-1 border-gray-300 p-2 rounded-md text-black"
-                    name="message"
-                    placeholder="Enter message"
+                    name="note"
+                    placeholder="Enter note"
                     onChange={handleChange}
                     required
                   />
@@ -235,9 +231,9 @@ const CreateResearch = ({
                   type="submit"
                   className="bg-primary text-white p-2 rounded-md w-full mt-5"
                   onClick={handleSubmit}
-                  disabled={applyVacancyLoading}
+                  disabled={createResearchLoading}
                 >
-                  Send {applyVacancyLoading && `...`}
+                  Send {createResearchLoading && `...`}
                 </button>
               </form>
             </div>
