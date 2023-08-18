@@ -165,6 +165,7 @@ const en_content = {
   human_resource: "Human Resource",
   graphics_designer: "Graphic Designer",
   submit_now: "Submit Now",
+  cgas_gallery: "CGA's Gallery",
 };
 
 export default en_content;

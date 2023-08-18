@@ -163,6 +163,7 @@ const am_content = {
   human_resource: "ሰራተኞች ማህበር",
   graphics_designer: "ግራፊክ ዲዛይን",
   submit_now: "አሁን ይጫኑ",
+  cgas_gallery: "CGA ፎቶች",
 };
 
 export default am_content;

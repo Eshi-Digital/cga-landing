@@ -11,7 +11,15 @@ interface IEvent {
   createResearchLoading: boolean;
   createResearchSuccess: boolean;
   createResearchError: Error | null;
+  fetchGalleryLoading: boolean;
+  fetchGallerySuccess: boolean;
+  fetchGalleryError: Error | null;
+  fetchAdLoading: boolean;
+  fetchAdSuccess: boolean;
+  fetchAdError: Error | null;
 
+  ad: any[];
+  gallery: any[];
   code: string | null;
   researches: any[];
   events: any[];
@@ -27,7 +35,15 @@ const INITIAL_STATE: IEvent = {
   createResearchLoading: false,
   createResearchSuccess: false,
   createResearchError: null,
+  fetchGalleryLoading: false,
+  fetchGallerySuccess: false,
+  fetchGalleryError: null,
+  fetchAdLoading: false,
+  fetchAdSuccess: false,
+  fetchAdError: null,
 
+  ad: [],
+  gallery: [],
   code: null,
   researches: [],
   events: [],
@@ -66,6 +82,30 @@ export const createResearchAsync = createAsyncThunk(
           "Content-Type": "multipart/form-data",
         },
       });
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const fetchGalleryAsync = createAsyncThunk(
+  "event/fetchGallery",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get("/gallery");
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const fetchAdAsync = createAsyncThunk(
+  "event/fetchAd",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get("/advertisements");
       return response;
     } catch (error: any) {
       return rejectWithValue(error.response.data);
@@ -129,6 +169,36 @@ const eventSlice = createSlice({
       .addCase(createResearchAsync.rejected, (state, action) => {
         state.createResearchLoading = false;
         state.createResearchError = action.payload as Error;
+      })
+      .addCase(fetchGalleryAsync.pending, (state) => {
+        state.fetchGalleryLoading = true;
+      })
+      .addCase(fetchGalleryAsync.fulfilled, (state, action) => {
+        const {
+          data: { gallery },
+        } = action.payload;
+        state.fetchGalleryLoading = false;
+        state.fetchGallerySuccess = true;
+        state.gallery = gallery;
+      })
+      .addCase(fetchGalleryAsync.rejected, (state, action) => {
+        state.fetchGalleryLoading = false;
+        state.fetchGalleryError = action.payload as Error;
+      })
+      .addCase(fetchAdAsync.pending, (state) => {
+        state.fetchAdLoading = true;
+      })
+      .addCase(fetchAdAsync.fulfilled, (state, action) => {
+        const {
+          data: { ad },
+        } = action.payload;
+        state.fetchAdLoading = false;
+        state.fetchAdSuccess = true;
+        state.ad = ad;
+      })
+      .addCase(fetchAdAsync.rejected, (state, action) => {
+        state.fetchAdLoading = false;
+        state.fetchAdError = action.payload as Error;
       });
   },
 });

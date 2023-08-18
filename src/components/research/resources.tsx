@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLocaleContent } from "../../utils/localeUtil";
 import { fetchResearchesAsync } from "@/store/features/event/event.slice";
 import CreateResearch from "./create-research";
+
 const ResourcesSection = () => {
   const dispatch = useDispatch<any>();
 

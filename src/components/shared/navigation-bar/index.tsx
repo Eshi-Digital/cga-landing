@@ -41,7 +41,7 @@ const NavigationBar = () => {
 
   return (
     <header>
-      <nav className="flex justify-between items-center py-5">
+      <nav className="flex justify-between items-center">
         <div className="flex items-center gap-16 pl-4 md:pl-8 lg:pt-0">
           <Image src={Logo} alt="Wegenawi Logo" className="relative lg:top-0" />
         </div>

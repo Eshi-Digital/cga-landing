@@ -1,4 +1,5 @@
 import AboutContributionSection from "@/components/about/about-contribution-section";
+import AboutGallerySection from "@/components/about/about-gallery-section";
 import AboutGovernanceSection from "@/components/about/about-governance-section";
 import AboutMainSection from "@/components/about/about-main-section";
 import AboutMissionSection from "@/components/about/about-mission-section";
@@ -22,6 +23,7 @@ const About: NextPage = () => {
         <NavigationBar />
         <Header name="About" />
         <AboutMainSection />
+        <AboutGallerySection />
         <AboutMissionSection />
         <AboutVisionSection />
         <AboutObjectiveSection />
