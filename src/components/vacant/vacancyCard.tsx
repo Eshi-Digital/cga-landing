@@ -5,6 +5,7 @@ import { FaMoneyBillWave } from "react-icons/fa";
 import { BsCheck2 } from "react-icons/bs";
 
 const VacancyCard = ({
+  id,
   type,
   description,
   requirements,
@@ -12,6 +13,7 @@ const VacancyCard = ({
   availableSlots,
   applicationDeadline,
 }: {
+  id: string;
   type: string;
   description: string;
   requirements: string[];

@@ -47,10 +47,16 @@ const VacancySection = () => {
    * variables
    */
   const [filter, setFilter] = useState(false);
+  const [va, setVa] = useState(null);
 
   const handleFilter = () => {
     setFilter(!filter);
   };
+
+  useEffect(() => {
+    console.log(va);
+    if (va) handleFilter();
+  }, [va]);
 
   if (fetchVacanciesLoading) {
     return <>Loading...</>;
@@ -58,13 +64,19 @@ const VacancySection = () => {
 
   return (
     <div className="py-10 max-w-7xl mx-auto text-center">
-      <Filter filter={filter} setFilter={handleFilter} />
+      <Filter filter={filter} setFilter={handleFilter} vacancyId={va} />
       <h1 className="mb-16 text-2xl">NEW JOB VACANCIES</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 my-10 mx-4 md:my-0 md:mx-0 lg:grid-cols-3 gap-10">
-        <div onClick={handleFilter} className="cursor-pointer">
-          {vacancies.map((vacancy: any) => (
+        {vacancies.map((vacancy: any) => (
+          <div
+            onClick={() => {
+              setVa(vacancy.id);
+            }}
+            className="cursor-pointer"
+          >
             <VacancyCard
               key={vacancy.id}
+              id={vacancy.id}
               type={vacancy.type}
               description={vacancy.description}
               requirements={vacancy.requirements}
@@ -72,8 +84,8 @@ const VacancySection = () => {
               availableSlots={vacancy.availableSlots}
               applicationDeadline={vacancy.applicationDeadline}
             />
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

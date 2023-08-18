@@ -8,24 +8,37 @@ import {
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { MdChangeCircle, MdRemove } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import {
+  applyVacancyAsync,
+  clearApplyVacancy,
+} from "@/store/features/vacancy/vacanct.slice";
 
 interface FilterProps {
   filter: boolean;
   setFilter: (filter: boolean) => void;
+  vacancyId: string;
 }
 
-const Filter = ({ filter = false, setFilter }: FilterProps) => {
+const Filter = ({ filter = false, setFilter, vacancyId }: FilterProps) => {
   const ref = useRef(null);
 
   const [type, setType] = useState("ShortTerm");
   const [sort, setSort] = useState("Ascending");
   const [loanOption, setLoanOption] = useState("Women");
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch<any>();
+  const { applyVacancyLoading, applyVacancySuccess, applyVacancyError } =
+    useSelector((state: any) => state.vacancy);
 
   const [state, setState] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
+    cv: null,
   });
 
   const [file, setFile] = useState<File | null>(null);
@@ -46,6 +59,44 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
       }
     }
   }, [filter]);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log(state.vacancyId);
+
+    const formData = new FormData();
+    formData.append("name", state.name);
+    formData.append("email", state.email);
+    formData.append("phone", state.phone);
+    formData.append("message", state.message);
+    formData.append("cv", state.cv as File);
+    formData.append("vacancyId", vacancyId);
+
+    dispatch(applyVacancyAsync(formData));
+  };
+
+  useEffect(() => {
+    if (applyVacancySuccess) {
+      toast.success("Application sent successfully", {
+        theme: "colored",
+      });
+      setFilter(false);
+      dispatch(clearApplyVacancy());
+      setState({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        cv: null,
+      });
+    }
+    if (applyVacancyError) {
+      toast.error("Error sending application", {
+        theme: "colored",
+      });
+      dispatch(clearApplyVacancy());
+    }
+  }, [applyVacancySuccess, applyVacancyError]);
 
   return (
     <AnimatePresence>
@@ -89,10 +140,9 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
                     <input
                       name="name"
                       type="text"
-                      className="w-full border-1 border-gray-300 p-2 rounded-md"
+                      className="w-full border-1 border-gray-300 p-2 rounded-md text-black"
                       placeholder="Enter name"
                       onChange={handleChange}
-                      value={state.name}
                       required
                     />
                   </div>
@@ -106,7 +156,7 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
                     <input
                       name="email"
                       type="email"
-                      className="w-full border-1 border-gray-300 p-2 rounded-md"
+                      className="w-full border-1 border-gray-300 p-2 rounded-md text-black"
                       placeholder="Enter email"
                       onChange={handleChange}
                       value={state.email}
@@ -125,10 +175,9 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
                     <input
                       name="phone"
                       type="text"
-                      className="w-full border-1 border-gray-300 p-2 rounded-md"
+                      className="w-full border-1 border-gray-300 p-2 rounded-md text-black"
                       placeholder="Enter phone"
                       onChange={handleChange}
-                      value={state.phone}
                       required
                     />
                   </div>
@@ -143,11 +192,10 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
                   {file == null ? (
                     <input
                       type="file"
-                      className="w-full border-1 border-gray-300 p-2 rounded-md"
+                      className="w-full border-1 border-gray-300 p-2 rounded-md text-black"
                       name="cv"
                       placeholder="Enter file"
                       onChange={handleFileChange}
-                      value={state.phone}
                       required
                     />
                   ) : (
@@ -172,19 +220,20 @@ const Filter = ({ filter = false, setFilter }: FilterProps) => {
                     Message
                   </label>
                   <textarea
-                    className="w-full border-1 border-gray-300 p-2 rounded-md"
+                    className="w-full border-1 border-gray-300 p-2 rounded-md text-black"
                     name="message"
                     placeholder="Enter message"
                     onChange={handleChange}
-                    value={state.message}
                     required
                   />
                 </div>
                 <button
                   type="submit"
                   className="bg-primary text-white p-2 rounded-md w-full mt-5"
+                  onClick={handleSubmit}
+                  disabled={applyVacancyLoading}
                 >
-                  Send
+                  Send {applyVacancyLoading && `...`}
                 </button>
               </form>
             </div>
