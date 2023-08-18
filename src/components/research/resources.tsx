@@ -1,8 +1,26 @@
 import ResourceCard from "./resource-card";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getLocaleContent } from "../../utils/localeUtil";
-
+import { fetchResearchesAsync } from "@/store/features/event/event.slice";
 const ResourcesSection = () => {
+  const dispatch = useDispatch<any>();
+
+  const {
+    fetchResearchesLoading,
+    fetchResearchesSuccess,
+    fetchResearchesError,
+    researches,
+    createResearchLoading,
+    createResearchSuccess,
+    createResearchError,
+  } = useSelector((state: any) => state.event);
+
+  useEffect(() => {
+    dispatch(fetchResearchesAsync());
+  }, []);
+
   const router = useRouter();
   const localized = getLocaleContent(router.locale as string);
   const publications = [
@@ -64,12 +82,27 @@ const ResourcesSection = () => {
     },
   ];
 
+  if (fetchResearchesLoading) {
+    return (
+      <div div className="py-20 max-w-7xl mx-auto text-center">
+        Loading...
+      </div>
+    );
+  }
+
   return (
     <div className="py-20 max-w-7xl mx-auto text-center">
       <p className="mb-10">{localized.research_content}</p>
       <div className="grid sm:grid-col-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:my-0">
-        {publications.map((e, i) => {
-          return <ResourceCard name={e.name} size={e.size} key={i} />;
+        {researches.map((e, i) => {
+          return (
+            <ResourceCard
+              name={e.title}
+              size={e.fileSize}
+              key={i}
+              fileName={e.file}
+            />
+          );
         })}
       </div>
     </div>
