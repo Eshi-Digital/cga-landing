@@ -3,6 +3,7 @@ import { AiFillFilePdf } from "react-icons/ai";
 interface ResourceCardProps {
   name: string;
   size: string;
+  fileName: string;
 }
 
 const ResourceCard = ({ name, size, fileName }: ResourceCardProps) => {

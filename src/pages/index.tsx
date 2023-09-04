@@ -49,7 +49,7 @@ const Home: NextPage = () => {
           }}
         >
           {fetchAdSuccess &&
-            ad.map((item: any) => (
+            ad.map((item: any, index: any) => (
               <div
                 className="bg-slate-100 rounded-lg p-2"
                 style={{
@@ -60,6 +60,7 @@ const Home: NextPage = () => {
                   maxHeight: "100px",
                   // backgroundColor: "black",
                 }}
+                key={index}
               >
                 <span>
                   <span
@@ -68,6 +69,7 @@ const Home: NextPage = () => {
                     }}
                   >
                     <Image
+                      alt="ad"
                       src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/images/ad/${item?.imageUrl}`}
                       style={{
                         display: "block",

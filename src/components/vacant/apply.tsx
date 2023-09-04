@@ -38,7 +38,7 @@ const Filter = ({ filter = false, setFilter, vacancyId }: FilterProps) => {
     email: "",
     phone: "",
     message: "",
-    cv: null,
+    cv: "",
   });
 
   const [file, setFile] = useState<File | null>(null);
@@ -86,7 +86,7 @@ const Filter = ({ filter = false, setFilter, vacancyId }: FilterProps) => {
         email: "",
         phone: "",
         message: "",
-        cv: null,
+        cv: "",
       });
     }
     if (applyVacancyError) {

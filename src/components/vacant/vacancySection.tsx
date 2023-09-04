@@ -47,7 +47,7 @@ const VacancySection = () => {
    * variables
    */
   const [filter, setFilter] = useState(false);
-  const [va, setVa] = useState(null);
+  const [va, setVa] = useState("");
 
   const handleFilter = () => {
     setFilter(!filter);
@@ -73,6 +73,7 @@ const VacancySection = () => {
               setVa(vacancy.id);
             }}
             className="cursor-pointer"
+            key={vacancy.id}
           >
             <VacancyCard
               key={vacancy.id}

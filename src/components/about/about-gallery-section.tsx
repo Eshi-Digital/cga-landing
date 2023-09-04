@@ -3,6 +3,7 @@ import { getLocaleContent } from "../../utils/localeUtil";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchGalleryAsync } from "@/store/features/event/event.slice";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const AboutGallerySection = () => {
   const router = useRouter();
@@ -22,9 +23,7 @@ const AboutGallerySection = () => {
 
   if (fetchGalleryLoading) {
     return (
-      <div div className="py-20 max-w-7xl mx-auto text-center">
-        Loading...
-      </div>
+      <div className="py-20 max-w-7xl mx-auto text-center">Loading...</div>
     );
   }
 
@@ -35,13 +34,13 @@ const AboutGallerySection = () => {
         {gallery.map((item: any) => {
           return (
             <>
-              <div class="flex flex-row px-5 py-2 lg:px-32 lg:pt-12">
-                {item.images.map((image: any) => {
+              <div className="flex flex-row px-5 py-2 lg:px-32 lg:pt-12">
+                {item.images.map((image: any, idx: any) => {
                   return (
-                    <div class="md:m-1 w-full">
-                      <img
+                    <div className="md:m-1 w-full" key={idx}>
+                      <Image
                         alt="gallery"
-                        class=" w-full rounded-lg object-cover object-center p-2"
+                        className=" w-full rounded-lg object-cover object-center p-2"
                         src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/images/gallery/${image}`}
                       />
                     </div>

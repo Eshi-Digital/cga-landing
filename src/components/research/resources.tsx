@@ -92,9 +92,7 @@ const ResourcesSection = () => {
 
   if (fetchResearchesLoading) {
     return (
-      <div div className="py-20 max-w-7xl mx-auto text-center">
-        Loading...
-      </div>
+      <div className="py-20 max-w-7xl mx-auto text-center">Loading...</div>
     );
   }
 
@@ -108,7 +106,7 @@ const ResourcesSection = () => {
         </button>
       </div>
       <div className="grid sm:grid-col-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:my-0">
-        {researches.map((e, i) => {
+        {researches.map((e: any, i: any) => {
           return (
             <ResourceCard
               name={e.title}

@@ -18,7 +18,7 @@ import {
 interface FilterProps {
   filter: boolean;
   setFilter: (filter: boolean) => void;
-  vacancyId: string;
+  vacancyId?: string;
 }
 
 const CreateResearch = ({ filter = false, setFilter }: FilterProps) => {
@@ -39,9 +39,9 @@ const CreateResearch = ({ filter = false, setFilter }: FilterProps) => {
 
   const [state, setState] = useState({
     title: "",
-    code: null,
+    code: "",
     note: "",
-    file: null,
+    file: "",
     email: "",
   });
 
@@ -87,9 +87,9 @@ const CreateResearch = ({ filter = false, setFilter }: FilterProps) => {
       setState({
         title: "",
         note: "",
-        code: null,
+        code: "",
         email: "",
-        file: null,
+        file: "",
       });
     }
     if (createResearchError) {

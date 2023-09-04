@@ -5,7 +5,11 @@ import CarouselControls from "./CarouselControls";
 import Dots from "./Dots";
 import Autoplay from "embla-carousel-autoplay";
 
-type Props = PropsWithChildren & EmblaOptionsType;
+type Props = PropsWithChildren &
+  EmblaOptionsType & {
+    className?: string;
+    style?: React.CSSProperties;
+  };
 
 const Carousel = ({ children, ...options }: Props) => {
   // 1. useEmblaCarousel returns a emblaRef and we must attach the ref to a container.
