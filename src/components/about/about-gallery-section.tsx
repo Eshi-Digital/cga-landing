@@ -1,14 +1,19 @@
 import { useRouter } from "next/router";
-import { getLocaleContent } from "../../utils/localeUtil";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchGalleryAsync } from "@/store/features/event/event.slice";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 
 const AboutGallerySection = () => {
   const router = useRouter();
-  const localized = getLocaleContent(router.locale as string);
   const dispatch = useDispatch<any>();
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
 
   const {
     gallery,
@@ -30,7 +35,7 @@ const AboutGallerySection = () => {
   return (
     <div className="max-w-7xl mx-auto">
       <div className="flex flex-col items-center my-8">
-        <p className="text-3xl uppercase">{localized.cgas_gallery}</p>
+        <p className="text-3xl uppercase">{t("cgas_gallery")}</p>
         {gallery.map((item: any) => {
           return (
             <>

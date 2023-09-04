@@ -1,11 +1,17 @@
 import { useRouter } from "next/router";
-import { getLocaleContent } from "../../utils/localeUtil";
+
 import Carousel from "../carousel/Carousel";
 import Image from "next/image";
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 
 const HeroSection = () => {
   const router = useRouter();
-  const localized = getLocaleContent(router.locale as string);
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
 
   const images = [
     {
@@ -54,7 +60,7 @@ const HeroSection = () => {
                     router.push("/about");
                   }}
                 >
-                  {localized.learn_more}
+                  {t("learn_more")}
                 </div>
               </div>
             </div>
@@ -62,13 +68,13 @@ const HeroSection = () => {
         ))}
         {/* <div className="flex flex-col gap-5 justify-center items-center">
           <div className="text-center text-white text-4xl font-PoiretOne-Regular">
-            {localized.hero_title}
+            {t("hero_title}
           </div>
           <div className="text-center text-white font-PoiretOne-Regular text-4xl">
-            {localized.hero_title2}
+            {t("hero_title2}
           </div>
           <div className="text-center text-white font-poppins-light text-md">
-            {localized.hero_subtitle}
+            {t("hero_subtitle}
           </div>
           <div className="flex-col md:flex-row flex gap-8 py-6">
             <div
@@ -77,7 +83,7 @@ const HeroSection = () => {
                 router.push("/about");
               }}
             >
-              {localized.learn_more}
+              {t("learn_more}
             </div>
           </div>
         </div> */}

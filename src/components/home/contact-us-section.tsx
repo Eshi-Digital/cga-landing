@@ -5,9 +5,12 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { getLocaleContent } from "../../utils/localeUtil";
 import { useRouter } from "next/router";
-
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 
 interface ContactUsForm {
   name: string;
@@ -78,24 +81,25 @@ const ContactUsSection = () => {
     }
   }, [sendContactUsSuccess, sendContactUsError]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
   /**
    * variables
    */
   const router = useRouter();
 
-    const localized = getLocaleContent(router.locale as string);
   return (
     <div className="text-center py-32">
-      <p className="font-poppins-medium text-lg mb-10">{localized.contact_us}</p>
-      <h1 className="text-3xl mb-8">{localized.get_in_touch}!</h1>
+      <p className="font-poppins-medium text-lg mb-10">{t("contact_us")}</p>
+      <h1 className="text-3xl mb-8">{t("get_in_touch")}!</h1>
       <p className="max-w-4xl mx-auto text-gray-500 mb-8 md:mb-32">
-       {localized.drop}
+        {t("drop")}
       </p>
       <div className="flex gap-4 flex-col-reverse md:flex-row px-2">
         <div className="w-full flex justify-center md:w-2/3">
           <div className="w-full md:w-1/2">
             <h1 className="text-2xl font-bold md:mb-12 mb-3 md:hidden flex my-4">
-             {localized.drop}
+              {t("drop")}
             </h1>
             <div className="flex flex-col gap-y-2">
               <input
@@ -163,7 +167,7 @@ const ContactUsSection = () => {
           <div className="flex flex-col items-start mb-12">
             <h1 className="font-poppins-medium text-md">Email</h1>
             <p className="font-poppins-regular text-sm text-gray-500">
-              info@wegenawi.com
+              info@cgaethiopia.com
             </p>
           </div>
           <div className="flex flex-col items-start ">

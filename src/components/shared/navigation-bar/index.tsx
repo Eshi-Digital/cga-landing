@@ -7,19 +7,27 @@ import Logo from "../../../../public/static/images/logo.png";
 
 import English from "../../../../public/static/images/america.png";
 import Amharic from "../../../../public/static/images/ethiopia.png";
-import { getLocaleContent } from "@/utils/localeUtil";
 import { Menu, Transition } from "@headlessui/react";
 import { AiFillCaretDown, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 
 const NavigationBar = () => {
   const router = useRouter();
   const [nav, setNav] = useState(false);
-  const { locale, locales, asPath } = useRouter();
-  const currentLocale = getLocaleContent(router.locale as string);
+  const { lang } = router.query;
+
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
 
   const handleNav = () => {
     setNav(!nav);
   };
+
+  const locales = ["en", "am"];
 
   const [lanuages, setLanuages] = useState<{
     [key: string]: string | string;
@@ -71,7 +79,7 @@ const NavigationBar = () => {
                   router.asPath === "/" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.home_link}</li>
+                <li>{t("home_link")}</li>
               </div>
             </Link>
             <Link href="/about" className="flex items-end">
@@ -80,7 +88,7 @@ const NavigationBar = () => {
                   router.asPath === "/about" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.about_link}</li>
+                <li>{t("about_link")}</li>
               </div>
             </Link>
             <Link href="/event" className="flex items-end">
@@ -89,7 +97,7 @@ const NavigationBar = () => {
                   router.asPath === "/event" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.event_link}</li>
+                <li>{t("event_link")}</li>
               </div>
             </Link>
             <Link href="/blog" className="flex items-end">
@@ -98,7 +106,7 @@ const NavigationBar = () => {
                   router.asPath === "/blog" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.blog_link}</li>
+                <li>{t("blog_link")}</li>
               </div>
             </Link>
             <Link href="/membership" className="flex items-end">
@@ -107,7 +115,7 @@ const NavigationBar = () => {
                   router.asPath === "/membership" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.membership_link}</li>
+                <li>{t("membership_link")}</li>
               </div>
             </Link>
             <Link href="/research" className="flex items-end">
@@ -116,7 +124,7 @@ const NavigationBar = () => {
                   router.asPath === "/research" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.research_link}</li>
+                <li>{t("research_link")}</li>
               </div>
             </Link>
             <Link href="/vacancy" className="flex items-end">
@@ -125,7 +133,7 @@ const NavigationBar = () => {
                   router.asPath === "/vacancy" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.vacancy_link}</li>
+                <li>{t("vacancy_link")}</li>
               </div>
             </Link>
             <Link href="/contact" className="flex items-end">
@@ -134,7 +142,7 @@ const NavigationBar = () => {
                   router.asPath === "/contact" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.contact_link}</li>
+                <li>{t("contact_link")}</li>
               </div>
             </Link>
           </ul>
@@ -143,10 +151,10 @@ const NavigationBar = () => {
               <Menu as="div" className="inline-block">
                 <Menu.Button className="inline-flex gap-2 w-full text-sm  font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 text-black">
                   <Image
-                    src={flag[router?.locale ?? "en"]}
+                    src={lang == "en" ? flag["en"] : flag["am"]}
                     alt={"language selection"}
                   />
-                  {currentLocale.language}
+                  {t("language")}
 
                   <Transition
                     as={Fragment}
@@ -164,7 +172,7 @@ const NavigationBar = () => {
                             return (
                               <Menu.Item key={l}>
                                 {({ active }) => (
-                                  <Link passHref href={asPath} locale={l}>
+                                  <LanguageSwitcher lang={l}>
                                     <div
                                       className={`${
                                         active ? "bg-yellow-500 " : "text-black"
@@ -176,7 +184,7 @@ const NavigationBar = () => {
                                       />
                                       {lanuages[l]}
                                     </div>
-                                  </Link>
+                                  </LanguageSwitcher>
                                 )}
                               </Menu.Item>
                             );
@@ -214,7 +222,7 @@ const NavigationBar = () => {
         </div>
 
         {/* Desktop menu */}
-        <div className="hidden xl:flex w-full md:items-center md:w-auto">
+        <div className="hidden xl:flex w-full md:items-center md:w-auto z-50">
           <ul className="flex gap-16 items-center">
             <Link href="/" className="flex items-end">
               <div
@@ -222,7 +230,7 @@ const NavigationBar = () => {
                   router.asPath === "/" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.home_link}</li>
+                <li>{t("home_link")}</li>
               </div>
             </Link>
             <Link href="/about" className="flex items-end">
@@ -231,7 +239,7 @@ const NavigationBar = () => {
                   router.asPath === "/about" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.about_link}</li>
+                <li>{t("about_link")}</li>
               </div>
             </Link>
             <Link href="/event" className="flex items-end">
@@ -240,7 +248,7 @@ const NavigationBar = () => {
                   router.asPath === "/event" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.event_link}</li>
+                <li>{t("event_link")}</li>
               </div>
             </Link>
             <Link href="/blog" className="flex items-end">
@@ -249,7 +257,7 @@ const NavigationBar = () => {
                   router.asPath === "/blog" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.blog_link}</li>
+                <li>{t("blog_link")}</li>
               </div>
             </Link>
             <Link href="/membership" className="flex items-end">
@@ -258,7 +266,7 @@ const NavigationBar = () => {
                   router.asPath === "/membership" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.membership_link}</li>
+                <li>{t("membership_link")}</li>
               </div>
             </Link>
             <Link href="/research" className="flex items-end">
@@ -267,7 +275,7 @@ const NavigationBar = () => {
                   router.asPath === "/research" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.research_link}</li>
+                <li>{t("research_link")}</li>
               </div>
             </Link>
             <Link href="/vacancy" className="flex items-end">
@@ -276,7 +284,7 @@ const NavigationBar = () => {
                   router.asPath === "/vacancy" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.vacancy_link}</li>
+                <li>{t("vacancy_link")}</li>
               </div>
             </Link>
             <Link href="/contact" className="flex items-end">
@@ -285,23 +293,24 @@ const NavigationBar = () => {
                   router.asPath === "/contact" && "font-poppins-semibold"
                 }`}
               >
-                <li>{currentLocale.contact_link}</li>
+                <li>{t("contact_link")}</li>
               </div>
             </Link>
           </ul>
         </div>
 
-        <div className="items-center hidden lg:flex gap-24 ">
+        <div className="items-center hidden lg:flex gap-24 z-50">
           <div className="py-3 lg:py-8 px-8 lg:px-14 ">
             <div className="items-center hidden lg:flex gap-24">
               <div className="relative flex space-x-5 items-center pl-5 w-32">
                 <Menu as="div" className="inline-block">
                   <Menu.Button className="inline-flex gap-2 w-full px-3 py-2 text-sm  font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 text-black">
                     <Image
-                      src={flag[router?.locale ?? "en"]}
+                      src={lang == "en" ? flag["en"] : flag["am"]}
                       alt={"language selection"}
                     />
-                    {currentLocale.language}
+
+                    {t("language")}
 
                     <Transition
                       as={Fragment}
@@ -319,7 +328,7 @@ const NavigationBar = () => {
                               return (
                                 <Menu.Item key={l}>
                                   {({ active }) => (
-                                    <Link passHref href={asPath} locale={l}>
+                                    <LanguageSwitcher lang={l}>
                                       <div
                                         className={`${
                                           active
@@ -333,7 +342,7 @@ const NavigationBar = () => {
                                         />
                                         {lanuages[l]}
                                       </div>
-                                    </Link>
+                                    </LanguageSwitcher>
                                   )}
                                 </Menu.Item>
                               );

@@ -2,9 +2,13 @@ import ResourceCard from "./resource-card";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLocaleContent } from "../../utils/localeUtil";
 import { fetchResearchesAsync } from "@/store/features/event/event.slice";
 import CreateResearch from "./create-research";
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 
 const ResourcesSection = () => {
   const dispatch = useDispatch<any>();
@@ -30,7 +34,8 @@ const ResourcesSection = () => {
   }, []);
 
   const router = useRouter();
-  const localized = getLocaleContent(router.locale as string);
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
   const publications = [
     {
       name: "Delegation A God Ordained Principle.pdf",
@@ -99,10 +104,10 @@ const ResourcesSection = () => {
   return (
     <div className="py-20 max-w-7xl mx-auto text-center">
       <CreateResearch filter={filter} setFilter={handleFilter} />
-      <p className="mb-10">{localized.research_content}</p>
+      <p className="mb-10">{t("research_content")}</p>
       <div className="flex w-full justify-end" onClick={handleFilter}>
         <button className="bg-primary text-white rounded-full py-2 w-44 text-center">
-          {localized.submit_now}
+          {t("submit_now")}
         </button>
       </div>
       <div className="grid sm:grid-col-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:my-0">

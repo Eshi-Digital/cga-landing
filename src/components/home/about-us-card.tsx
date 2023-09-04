@@ -1,8 +1,11 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { MdArrowForwardIos } from "react-icons/md";
-import { getLocaleContent } from "../../utils/localeUtil";
-
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 
 const AboutUsCard = ({
   title,
@@ -16,7 +19,8 @@ const AboutUsCard = ({
   color: string;
 }) => {
   const router = useRouter();
-    const localized = getLocaleContent(router.locale as string);
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
 
   return (
     <div className="py-12 w-full xl:w-80 flex flex-col items-center gap-5 shadow-md px-4 rounded-lg">
@@ -35,7 +39,7 @@ const AboutUsCard = ({
           router.push("/about");
         }}
       >
-        <div>{localized.view_more}</div>
+        <div>{t("view_more")}</div>
         <div className="rounded-full w-10 h-10 bg-blue-200 flex justify-center items-center">
           <MdArrowForwardIos />
         </div>
