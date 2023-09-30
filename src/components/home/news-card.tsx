@@ -17,7 +17,7 @@ const NewsCard = ({
   publishedDate,
 }: NewsProp) => {
   return (
-    <div className="flex flex-col gap-4 items-center w-full rounded-lg shadow-lg pb-10 px-4">
+    <div className="max-h-80 flex flex-col gap-4 items-center w-full rounded-lg shadow-lg pb-10 px-4">
       <Image
         width={300}
         height={200}
@@ -36,7 +36,7 @@ const NewsCard = ({
         </div>
       </div>
       <div>
-        <h2 className="text-xl font-poppins-medium">
+        <h2 className="text-xl text-center font-poppins-medium">
           {title.length > 50 ? title.slice(0, 50) + "..." : title}
         </h2>
       </div>

@@ -106,7 +106,7 @@ const NavigationBar = () => {
                   router.asPath === "/blog" && "font-poppins-semibold"
                 }`}
               >
-                <li>{t("blog_link")}</li>
+                <li>{t("news_link")}</li>
               </div>
             </Link>
             <Link href="/membership" className="flex items-end">
@@ -257,7 +257,7 @@ const NavigationBar = () => {
                   router.asPath === "/blog" && "font-poppins-semibold"
                 }`}
               >
-                <li>{t("blog_link")}</li>
+                <li>{t("news_link")}</li>
               </div>
             </Link>
             <Link href="/membership" className="flex items-end">

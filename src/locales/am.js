@@ -7,7 +7,7 @@ const am_content = {
   research_link: "ምርምር",
   contact_link: "አድራሻ",
   vacancy_link: "ክፍት ቦታ",
-  blog_link: "ብሎግ",
+  news_link: "ዜናዎች",
   quick_link: "ፈጣን ማገናኛዎች",
   hero_title: "ይህ",
   hero_title2: "የንግድ ስራትምህርት ምሩቃን ማህበር ነው",

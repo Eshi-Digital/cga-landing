@@ -7,7 +7,7 @@ const en_content = {
   research_link: "Research",
   contact_link: "Contact",
   vacancy_link: "Vacancy",
-  blog_link: "Blog",
+  news_link: "News",
   quick_link: "Quick Links",
   hero_title: "We Are Creative",
   hero_title2: "Commercial Graduates Association",

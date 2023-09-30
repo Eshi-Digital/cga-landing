@@ -70,12 +70,6 @@ const BlogMainSecton = () => {
 
   return (
     <div className="max-w-7xl mx-auto mb-10">
-      <p
-        className="px-8 py-10"
-        dangerouslySetInnerHTML={{
-          __html: singleNews?.content!,
-        }}
-      ></p>
       <div className="mt-16 grid gap-10 py-4 md:py-0">
         {newses?.length == 0 ? (
           <div className="text-md">Loading...</div>
@@ -87,7 +81,7 @@ const BlogMainSecton = () => {
                 className={`${
                   singleNews == item.id &&
                   "border-2 border-dashed border-primary"
-                } cursor-pointer`}
+                } cursor-pointer mx-2`}
                 onClick={() => {
                   setSingleNews(item);
                 }}
@@ -105,6 +99,12 @@ const BlogMainSecton = () => {
           </div>
         )}
       </div>
+      <p
+        className="px-8 py-10"
+        dangerouslySetInnerHTML={{
+          __html: singleNews?.content!,
+        }}
+      ></p>
     </div>
   );
 };
