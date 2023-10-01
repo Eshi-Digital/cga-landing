@@ -11,8 +11,8 @@ const MembershipFee = () => {
   const { t } = useTranslation();
   const [query] = useLanguageQuery();
   return (
-    <div className="max-w-7xl mx-auto text-center flex flex-col items-start gap-4 py-20">
-      <h1 className="pb-4 text-2xl uppercase w-full text-center">
+    <div className="text-gray-500 max-w-7xl mx-auto text-center flex flex-col items-start gap-4 pb-20">
+      <h1 className="text-black pb-4 text-2xl uppercase w-full text-center">
         {t("membership_fee")}
       </h1>
       <p className="flex items-start gap-4 justify-center text-left">

@@ -54,9 +54,8 @@ const VacancySection = () => {
   };
 
   useEffect(() => {
-    console.log(va);
     if (va) handleFilter();
-  }, [va]);
+  }, [va]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (fetchVacanciesLoading) {
     return <>Loading...</>;

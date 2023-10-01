@@ -82,7 +82,8 @@ const EventMainSecton = () => {
                 <div
                   key={e.id}
                   className={`${
-                    event.id == e.id && "border-2 border-dashed border-primary"
+                    event.id == e.id &&
+                    "border-2 border-dashed border-primary h-fit rounded-lg"
                   } cursor-pointer`}
                   onClick={() => {
                     setEvent(e);
@@ -104,7 +105,7 @@ const EventMainSecton = () => {
           <ImageGallery items={images} />
         </div>
         <div
-          className="md:w-1/2 flex-wrap"
+          className="md:w-1/2 flex-wrap text-justify text-gray-500"
           dangerouslySetInnerHTML={{
             __html: event ? event.description : "",
           }}

@@ -137,7 +137,7 @@ export default function AddressAndContactForm() {
             />
             <button
               disabled={sendContactUsLoading}
-              className="bg-primary text-white p-2 rounded-md"
+              className="bg-primary text-white p-2 rounded-md hover:bg-gray-400 transition duration-300 ease-in-out"
               onClick={handleSubmit}
             >
               {sendContactUsLoading ? "Sending..." : "Send"}

@@ -1,7 +1,7 @@
 import Logo from "../../../public/static/images/logo_only.png";
 import Image from "next/image";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { MdLocationCity } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
 
 const EventCard = ({
   description,
@@ -15,13 +15,13 @@ const EventCard = ({
   endDate: string;
 }) => {
   return (
-    <div className="max-h-80 flex gap-8 shadow-2xl shadow-slate-200 py-8 justify-center w-full">
+    <div className="rounded-lg h-80 flex gap-8 shadow-2xl shadow-slate-200 py-8 justify-center w-full">
       <div className="flex flex-col items-center gap-4">
         <div className="text-center">
           <Image src={Logo} alt="logo" />
         </div>
         <p
-          className="text-center line-clamp-4"
+          className="text-center line-clamp-4 text-sm"
           dangerouslySetInnerHTML={{
             __html: description,
           }}
@@ -45,7 +45,7 @@ const EventCard = ({
           </div>
           <div className="flex gap-4 items-center">
             <span>
-              <MdLocationCity className="text-primary" size={20} />
+              <FaLocationDot className="text-primary" size={20} />
             </span>
             <p className="text-sm">{location}</p>
           </div>

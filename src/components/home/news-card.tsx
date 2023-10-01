@@ -1,5 +1,6 @@
 import Image from "next/image";
-import News from "../../../public/static/images/news.png";
+import { AiFillRightCircle } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 interface NewsProp {
   author: string;
@@ -16,6 +17,10 @@ const NewsCard = ({
   content,
   publishedDate,
 }: NewsProp) => {
+  const router = useRouter();
+
+  console.log(router.pathname);
+
   return (
     <div className="max-h-96 flex flex-col gap-4 items-center w-full rounded-lg shadow-lg pb-10 px-4">
       <Image
@@ -48,6 +53,19 @@ const NewsCard = ({
               content.length > 150 ? content.slice(0, 150) + "..." : content,
           }}
         ></span>
+      </div>
+      <div
+        className={`flex gap-4 justify-end items-center w-full cursor-pointer ${
+          router.pathname === "/blog" ? "hidden" : "flex"
+        }`}
+        onClick={() => {
+          router.push("/blog");
+        }}
+      >
+        <span>See more</span>
+        <div className="rounded-full flex items-center justify-center hover:bg-gray-400 transition duration-300 ease-in-out">
+          <AiFillRightCircle size={24} className="text-primary" />
+        </div>
       </div>
     </div>
   );

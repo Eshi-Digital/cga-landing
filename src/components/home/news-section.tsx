@@ -7,7 +7,6 @@ import { fetchNewsAsync } from "@/store/features/news/news.slice";
 import { AiFillRightCircle } from "react-icons/ai";
 
 const NewsSection = () => {
-  const router = useRouter();
   const dispatch = useDispatch<any>();
 
   const { fetchNewsLoading, news } = useSelector((state: any) => state.news);
@@ -17,7 +16,7 @@ const NewsSection = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="flex flex-col gap-12 items-center max-w-5xl mx-auto pb-8">
+    <div className="flex flex-col gap-12 items-center max-w-5xl mx-auto mb-24">
       <div className="text-4xl">Latest News</div>
       {fetchNewsLoading ? (
         <div className="text-md">Loading...</div>
@@ -35,18 +34,6 @@ const NewsSection = () => {
           ))}
         </div>
       )}
-
-      <div
-        className="flex gap-4 justify-end items-center w-full cursor-pointer"
-        onClick={() => {
-          router.push("/blog");
-        }}
-      >
-        <div>View All</div>
-        <div className="rounded-full flex items-center justify-center hover:bg-gray-400 transition duration-300 ease-in-out">
-          <AiFillRightCircle size={40} className="text-primary" />
-        </div>
-      </div>
     </div>
   );
 };

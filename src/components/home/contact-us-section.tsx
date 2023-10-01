@@ -155,7 +155,7 @@ const ContactUsSection = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-col md:justify-between sm:flex-row w-full md:w-1/3">
+        <div className="flex flex-col md:flex-col md:justify-evenly sm:flex-row w-full md:w-1/3">
           <div className="flex flex-col items-start">
             <h1 className="font-poppins-medium text-md">Phone</h1>
             <p className="font-poppins-regular text-sm text-gray-500">

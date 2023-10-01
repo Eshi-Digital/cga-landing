@@ -100,7 +100,7 @@ const BlogMainSecton = () => {
         )}
       </div>
       <p
-        className="px-8 py-10"
+        className="px-8 py-10 text-justify text-gray-500"
         dangerouslySetInnerHTML={{
           __html: singleNews?.content!,
         }}

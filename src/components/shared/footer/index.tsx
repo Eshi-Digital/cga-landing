@@ -46,8 +46,8 @@ const Footer = () => {
         <div className="flex justify-center items-center">
           <div className="text-gray-500 text-sm text-center">
             Copyright © 2023 Commercial Graduates Association, Developed by
-            <span className="text-white">Eshi digital</span>. All rights
-            reserved
+            <span className="text-white ml-1">Eshi digital</span>. All rights
+            reserved.
           </div>
         </div>
       </div>

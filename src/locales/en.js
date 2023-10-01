@@ -163,7 +163,7 @@ const en_content = {
   marketing: "Marketing",
   finance: "Finance",
   human_resource: "Human Resource",
-  graphics_designer: "Graphic Designer",
+  graphics_designer: "Graphics Designer",
   submit_now: "Submit Now",
   cgas_gallery: "CGA's Gallery",
 };
