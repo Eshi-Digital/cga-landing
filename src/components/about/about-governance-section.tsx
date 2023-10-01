@@ -20,7 +20,7 @@ const AboutGovernanceSection = () => {
             <span>
               <MdCheck />
             </span>
-            <p className="">{t("governance_content")}</p>
+            <p className="text-justify">{t("governance_content")}</p>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@ const AboutGovernanceSection = () => {
             <span>
               <MdCheck />
             </span>
-            <p className="">{t("strategy_content")}</p>
+            <p className="text-justify">{t("strategy_content")}</p>
           </div>
         </div>
       </div>

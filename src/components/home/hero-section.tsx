@@ -33,7 +33,7 @@ const HeroSection = () => {
 
   return (
     // <div className=" h-[90vh] bg-no-repeat bg-cover flex items-center justify-center py-28">
-    <div className="h-[90vh] bg-no-repeat w-full bg-cover ">
+    <div className="h-[90vh] bg-no-repeat w-full bg-cover">
       <Carousel>
         {images.map((image, index) => (
           <div
@@ -55,7 +55,7 @@ const HeroSection = () => {
               </div>
               <div className="flex-col md:flex-row flex gap-8 py-6">
                 <div
-                  className="bg-primary rounded-full px-12 py-3 text-white cursor-pointer"
+                  className="bg-primary rounded-full px-12 py-3 text-white cursor-pointer hover:bg-gray-400 transition duration-300 ease-in-out"
                   onClick={() => {
                     router.push("/about");
                   }}

@@ -17,11 +17,11 @@ const AboutMissionSection = () => {
       <div className="md:w-1/2">
         <div>
           <p className="text-lg font-poppins-bold">{t("statute")}</p>
-          <p className="pt-2">{t("statute_content")}</p>
+          <p className="pt-2 text-justify">{t("statute_content")}</p>
         </div>
         <div className="pt-8">
           <p className="text-lg font-poppins-bold">{t("mission")}</p>
-          <p className="pt-2">{t("mission_content")}</p>
+          <p className="pt-2 text-justify">{t("mission_content")}</p>
         </div>
       </div>
       <div className="md:w-1/2 flex justify-end">

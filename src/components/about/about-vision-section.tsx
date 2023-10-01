@@ -8,16 +8,14 @@ const AboutVisionSection = () => {
   const router = useRouter();
   const localized = getLocaleContent(router.locale as string);
   return (
-    <div className="flex flex-col md:flex-row gap-8 py-10 md:px-52 items-center my-8 bg-gradient-to-r from-[#E0FFEE] to-[#FFFEF2]  px-4 md:px-0">
+    <div className="flex flex-col md:flex-row gap-8 py-10 md:px-52 items-center my-8 bg-gradient-to-r from-[#E0FFEE] to-[#FFFEF2]  px-4">
       <div className="md:w-1/2 flex justify-end">
         <Image src={Vision} alt="mission" />
       </div>
       <div className="md:w-1/2">
         <div>
           <p className="text-lg font-poppins-bold">{localized.vision}</p>
-          <p className="pt-2">
-           {localized.vision_content}
-          </p>
+          <p className="pt-2 text-justify">{localized.vision_content}</p>
         </div>
         <div className="pt-8">
           <p className="text-lg font-poppins-bold">{localized.values}</p>
@@ -32,29 +30,25 @@ const AboutVisionSection = () => {
               <span>
                 <MdCheck />
               </span>{" "}
-                           {localized.value_2}
-
+              {localized.value_2}
             </li>
             <li className="flex items-center gap-4 pb-4">
               <span>
                 <MdCheck />
               </span>{" "}
-                            {localized.value_3}
-
+              {localized.value_3}
             </li>
             <li className="flex items-center gap-4 pb-4">
               <span>
                 <MdCheck />
               </span>{" "}
-                           {localized.value_4}
-
+              {localized.value_4}
             </li>
             <li className="flex items-center gap-4 pb-4">
               <span>
                 <MdCheck />
               </span>{" "}
-                           {localized.value_5}
-
+              {localized.value_5}
             </li>
           </ul>
         </div>

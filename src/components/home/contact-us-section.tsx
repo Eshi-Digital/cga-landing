@@ -89,19 +89,17 @@ const ContactUsSection = () => {
   const router = useRouter();
 
   return (
-    <div className="text-center py-32">
-      <p className="font-poppins-medium text-lg mb-10">{t("contact_us")}</p>
-      <h1 className="text-3xl mb-8">{t("get_in_touch")}!</h1>
-      <p className="max-w-4xl mx-auto text-gray-500 mb-8 md:mb-32">
-        {t("drop")}
-      </p>
+    <div className="text-center py-16 bg-[#FAFAFA]">
+      <p className="text-4xl">{t("contact_us")}</p>
+      <h1 className="text-2xl my-4 text-gray-600">{t("get_in_touch")}!</h1>
+
       <div className="flex gap-4 flex-col-reverse md:flex-row px-2">
         <div className="w-full flex justify-center md:w-2/3">
           <div className="w-full md:w-1/2">
             <h1 className="text-2xl font-bold md:mb-12 mb-3 md:hidden flex my-4">
               {t("drop")}
             </h1>
-            <div className="flex flex-col gap-y-2">
+            <div className="flex flex-col gap-y-2 mt-8">
               <input
                 value={contactUsForm.name}
                 name="name"
@@ -149,7 +147,7 @@ const ContactUsSection = () => {
               />
               <button
                 disabled={sendContactUsLoading}
-                className="bg-primary text-white p-2 rounded-md"
+                className="bg-primary text-white p-2 rounded-md mt-6"
                 onClick={handleSubmit}
               >
                 {sendContactUsLoading ? "Sending..." : "Send"}
@@ -158,13 +156,13 @@ const ContactUsSection = () => {
           </div>
         </div>
         <div className="flex flex-col md:flex-col md:justify-between sm:flex-row w-full md:w-1/3">
-          <div className="flex flex-col items-start mb-12">
+          <div className="flex flex-col items-start">
             <h1 className="font-poppins-medium text-md">Phone</h1>
             <p className="font-poppins-regular text-sm text-gray-500">
               +251-966303009
             </p>
           </div>
-          <div className="flex flex-col items-start mb-12">
+          <div className="flex flex-col items-start">
             <h1 className="font-poppins-medium text-md">Email</h1>
             <p className="font-poppins-regular text-sm text-gray-500">
               info@cgaethiopia.com

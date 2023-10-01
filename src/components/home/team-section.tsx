@@ -54,12 +54,17 @@ const TeamSection = () => {
   ];
 
   return (
-    <div className="text-center py-10 md:py-32">
-      <p className="font-poppins-medium text-lg mb-6 md:mb-10">{t("team")}</p>
-      <h1 className="text-3xl mb-8">{t("board_members")}</h1>
-      <p className="max-w-4xl mx-auto text-gray-500 mb-8 md:mb-16">
-        {t("board_sub")}
-      </p>
+    <div className="text-center py-10 md:py-16">
+      <p className="text-4xl mb-4">{t("team")}</p>
+      <h1 className="text-gray-600 text-2xl mb-4">{t("board_members")}</h1>
+      <div className="flex justify-end max-w-7xl mx-auto">
+        <div onClick={() => scroll(-630)} className="cursor-pointer">
+          <AiFillLeftCircle size={40} className="text-primary" />
+        </div>
+        <div onClick={() => scroll(630)} className="cursor-pointer">
+          <AiFillRightCircle size={40} className="text-primary" />
+        </div>
+      </div>
       <div
         className="flex overflow-x-auto p-4 gap-8 w-full md:max-w-7xl mx-auto scrollbar-hide mb-4"
         ref={ref}
@@ -73,14 +78,6 @@ const TeamSection = () => {
             image={member["image"]}
           />
         ))}
-      </div>
-      <div className="flex justify-end max-w-7xl mx-auto">
-        <div onClick={() => scroll(-200)} className="cursor-pointer">
-          <AiFillLeftCircle size={40} className="text-primary" />
-        </div>
-        <div onClick={() => scroll(200)} className="cursor-pointer">
-          <AiFillRightCircle size={40} className="text-primary" />
-        </div>
       </div>
     </div>
   );

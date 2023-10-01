@@ -15,13 +15,13 @@ const EventCard = ({
   endDate: string;
 }) => {
   return (
-    <div className="flex gap-8 shadow-2xl shadow-slate-200 px-8 py-8">
+    <div className="max-h-80 flex gap-8 shadow-2xl shadow-slate-200 py-8 justify-center w-full">
       <div className="flex flex-col items-center gap-4">
         <div className="text-center">
           <Image src={Logo} alt="logo" />
         </div>
         <p
-          className="text-start w-full line-clamp-4"
+          className="text-center line-clamp-4"
           dangerouslySetInnerHTML={{
             __html: description,
           }}
@@ -31,7 +31,7 @@ const EventCard = ({
             <span>
               <AiOutlineCalendar className="text-primary" size={20} />
             </span>
-            <p>
+            <p className="text-sm">
               {`${new Date(startDate).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
@@ -47,7 +47,7 @@ const EventCard = ({
             <span>
               <MdLocationCity className="text-primary" size={20} />
             </span>
-            <p>{location}</p>
+            <p className="text-sm">{location}</p>
           </div>
         </div>
       </div>

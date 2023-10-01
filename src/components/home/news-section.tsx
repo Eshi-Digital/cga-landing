@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchNewsAsync } from "@/store/features/news/news.slice";
+import { AiFillRightCircle } from "react-icons/ai";
 
 const NewsSection = () => {
   const router = useRouter();
@@ -13,11 +14,11 @@ const NewsSection = () => {
 
   useEffect(() => {
     dispatch(fetchNewsAsync());
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="flex flex-col gap-12 items-center py-10 md:py-20 max-w-5xl mx-auto">
-      <div className="text-3xl">Latest News</div>
+    <div className="flex flex-col gap-12 items-center max-w-5xl mx-auto pb-8">
+      <div className="text-4xl">Latest News</div>
       {fetchNewsLoading ? (
         <div className="text-md">Loading...</div>
       ) : (
@@ -42,8 +43,8 @@ const NewsSection = () => {
         }}
       >
         <div>View All</div>
-        <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center">
-          <MdArrowRight />
+        <div className="rounded-full flex items-center justify-center hover:bg-gray-400 transition duration-300 ease-in-out">
+          <AiFillRightCircle size={40} className="text-primary" />
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     dispatch(fetchAdAsync());
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>

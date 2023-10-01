@@ -22,10 +22,10 @@ const AnoutMembershipSection = () => {
 
   useEffect(() => {
     dispatch(fetchAdAsync());
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="px-2 flex flex-col md:flex-row items-start py-4 max-w-7xl mx-auto ">
+    <div className="px-2 flex flex-col md:flex-row items-start py-4 max-w-7xl mx-auto mb-20">
       <div className="w-full md:w-1/2">
         <Image
           src="/static/images/father.png"
@@ -39,7 +39,7 @@ const AnoutMembershipSection = () => {
           {t("about_membership")}
         </div>
         <div>{t("by_laws")}</div>
-        <div className="text-sm mb-8">{t("about_sub")}</div>
+        <div className="text-justify text-gray-600">{t("about_sub")}</div>
         {/* <div className="flex gap-8 items-center">
           <div className="hidden sm:flex rounded-full w-20 h-20 bg-red-100"></div>
           <div className="flex flex-col gap-2">
@@ -56,7 +56,7 @@ const AnoutMembershipSection = () => {
         </div> */}
         <div className="flex-col md:flex-row flex gap-8">
           <div
-            className="bg-primary rounded-full px-12 py-3 text-white cursor-pointer"
+            className="bg-primary rounded-full px-12 py-3 text-white cursor-pointer hover:bg-gray-400 transition duration-300 ease-in-out"
             onClick={() => {
               router.push("/about");
             }}

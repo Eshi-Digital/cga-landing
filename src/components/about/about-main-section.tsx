@@ -10,7 +10,7 @@ const AboutMainSection = () => {
   const { t } = useTranslation();
   const [query] = useLanguageQuery();
   return (
-    <div className="max-w-7xl mx-auto py-8 px-4 md:px-0">
+    <div className="max-w-7xl mx-auto py-8 px-4 md:px-0 text-justify">
       {t("about_content")}
     </div>
   );

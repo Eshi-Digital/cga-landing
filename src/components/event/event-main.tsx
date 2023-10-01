@@ -68,17 +68,6 @@ const EventMainSecton = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row gap-8 py-16">
-        <div className="md:w-1/2">
-          <ImageGallery items={images} />
-        </div>
-        <div
-          className="md:w-1/2 flex-wrap"
-          dangerouslySetInnerHTML={{
-            __html: event ? event.description : "",
-          }}
-        />
-      </div>
       <div className="my-16">
         <p className="text-center text-3xl font-poppins-bold text-primary">
           Events
@@ -109,6 +98,17 @@ const EventMainSecton = () => {
               );
             })}
         </div>
+      </div>
+      <div className="flex flex-col md:flex-row gap-8 py-16">
+        <div className="md:w-1/2">
+          <ImageGallery items={images} />
+        </div>
+        <div
+          className="md:w-1/2 flex-wrap"
+          dangerouslySetInnerHTML={{
+            __html: event ? event.description : "",
+          }}
+        />
       </div>
     </div>
   );

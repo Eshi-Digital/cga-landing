@@ -52,24 +52,11 @@ const AboutGallerySection = () => {
                   );
                 })}
               </div>
-              <p
-                className="
-            text-2xl
-            font-bold
-            text-center
-            lg:text-left
-            lg:pt-12
-            lg:pl-12
-          "
-              >
+              <p className="text-2xl font-bold text-center lg:text-left lg:pt-12 lg:pl-12">
                 {item.title}
               </p>
               <p
-                className="
-            text-lg
-            text-center
-            lg:text-left
-          "
+                className="text-lg text-center lg:text-left"
                 dangerouslySetInnerHTML={{ __html: item.description }}
               ></p>
             </>
