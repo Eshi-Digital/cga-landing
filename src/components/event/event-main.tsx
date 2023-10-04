@@ -1,6 +1,7 @@
 import { AiOutlineCalendar } from "react-icons/ai";
 import { MdLocationCity } from "react-icons/md";
 import ImageGallery from "react-image-gallery";
+import Gallery from "react-photo-gallery";
 import EventCard from "./event-card";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -102,7 +103,7 @@ const EventMainSecton = () => {
       </div>
       <div className="flex flex-col md:flex-row gap-8 py-16">
         <div className="md:w-1/2">
-          <ImageGallery items={images} />
+          <Gallery photos={images} />
         </div>
         <div
           className="md:w-1/2 flex-wrap text-justify text-gray-500"

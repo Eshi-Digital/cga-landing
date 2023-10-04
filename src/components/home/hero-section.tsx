@@ -16,18 +16,27 @@ const HeroSection = () => {
   const images = [
     {
       src: "/static/images/hero.png",
-      hero_title: "Slide 1",
-      hero_subtitle: "Slide 1",
     },
     {
-      src: "/static/images/hero.png",
-      hero_title: "Slide 2",
-      hero_subtitle: "Slide 2",
+      src: "/static/images/1.jpeg",
     },
     {
-      src: "/static/images/hero.png",
-      hero_title: "Slide 3",
-      hero_subtitle: "Slide 3",
+      src: "/static/images/2.jpeg",
+    },
+    {
+      src: "/static/images/3.jpeg",
+    },
+    {
+      src: "/static/images/4.jpeg",
+    },
+    {
+      src: "/static/images/5.jpeg",
+    },
+    {
+      src: "/static/images6.jpeg",
+    },
+    {
+      src: "/static/images/7.jpeg",
     },
   ];
 
@@ -47,12 +56,12 @@ const HeroSection = () => {
               alt="alt"
             />
             <div className="flex flex-col gap-5 justify-center items-center">
-              <div className="text-center text-white font-PoiretOne-Regular text-4xl">
+              {/* <div className="text-center text-white font-PoiretOne-Regular text-4xl">
                 {image.hero_title}
               </div>
               <div className="text-center text-white font-poppins-light text-md">
                 {image.hero_subtitle}
-              </div>
+              </div> */}
               <div className="flex-col md:flex-row flex gap-8 py-6">
                 <div
                   className="bg-primary rounded-full px-12 py-3 text-white cursor-pointer hover:bg-gray-400 transition duration-300 ease-in-out"
